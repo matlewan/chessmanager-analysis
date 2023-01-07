@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 import bs4
 import json
 import os
@@ -6,45 +5,7 @@ import pandas as pd
 import re
 import requests
 
-@dataclass
-class Match:
-    tournament : str
-    round : int
-    white : str
-    black : str
-    result : float
-
-@dataclass
-class Result:
-    tournament : str
-    player : str
-    place : int
-    points : float
-    bch1 : float
-    bch : float
-
-@dataclass
-class Player:
-    name : str
-    title : str
-    club : str
-    birthdate : int
-    rating : float
-
-@dataclass
-class Tournament:
-    id : str
-    name : str
-    date : str
-    players : int
-    rounds : int
-
-@dataclass
-class Data:
-    tournaments : list[Tournament]
-    matches : list[Match]
-    results : list[Result]
-    players : list[Player]
+from src.data import *
 
 def download_players(tournament_url : str) -> list[Result]:
     df = pd.read_html(f'{tournament_url}/players')[0]
@@ -146,7 +107,7 @@ def update(data : Data, url : str, search_phrase : str):
     for t in data.tournaments[::-1]:
         if t.id in ids:
             continue
-        print(t.name, end=' ')
+        print(t.name)
         url = f"https://www.chessmanager.com/en/tournaments/{t.id}"
         data.matches += download_matches(url, t.name, t.rounds)
         data.results += download_results(url, t.name, t.rounds)
@@ -163,7 +124,7 @@ def update(data : Data, url : str, search_phrase : str):
 # update(data, 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix', 'Pomysł GrandPrix')
 
 def main():
-    filename = './data.json'
+    filename = 'data/data.json'
     url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix'
     search_phrase = 'Pomysł GrandPrix'
 
