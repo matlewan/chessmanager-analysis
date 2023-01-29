@@ -5,17 +5,19 @@ import router from './router'
 
 import './assets/main.css'
 
-const resp = await fetch('/out.json')
-const data = await resp.json()
 const app = createApp(App)
 const store = createStore({
    state() {
       return {
-         data: data
+         data: {}
       }
    },
 })
-
 app.use(router)
 app.use(store)
-app.mount('#app')
+fetch('/out.json')
+   .then(resp => resp.json())
+   .then(data => {
+      store.state.data = data;
+      app.mount('#app') 
+   })
