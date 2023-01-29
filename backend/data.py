@@ -25,6 +25,7 @@ class Player:
     club : str
     birthdate : int
     rating : float
+    id : int = 0
     pomysl_rating : float = 0.0  # Rating calculated based on result in Pomysł GrandPrix
     score : float = 0.0
     M: int = 0

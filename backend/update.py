@@ -5,7 +5,7 @@ import pandas as pd
 import re
 import requests
 
-from src.data import *
+from data import *
 
 def download_players(tournament_url : str) -> list[Result]:
     df = pd.read_html(f'{tournament_url}/players')[0]
@@ -53,7 +53,7 @@ def download_results(tournament_url : str, tournament : str, rounds : int) -> li
     results = []
     for _,row in df.iterrows():
         place, _, _, player, _, _, _, pts, bch1, bch, _, _, _, _, _ = row
-        r = Result(tournament, norm_player(player), int(place), int(pts), float(bch1), float(bch))
+        r = Result(tournament, norm_player(player), int(place), float(pts), float(bch1), float(bch))
         results.append(r)
     return results
 
@@ -100,20 +100,26 @@ def save(filename : str, data : object):
         jsonString = json.dumps(data, default=lambda o: o.__dict__, indent=2, ensure_ascii=False)
         file.write(jsonString)
 
-def update(data : Data, url : str, search_phrase : str):
-    ids = { t['id'] for t in data.tournaments }
+def _update(filename:str, data : Data, url : str, search_phrase : str):
+    names = { r['tournament'] for r in data.results }
     players = {p['name'] : p for p in data.players}
     data.tournaments = download_tournaments(url, search_phrase)
     for t in data.tournaments[::-1]:
-        if t.id in ids:
+        if t.name in names:
             continue
-        print(t.name)
+        print(t.name, end=" ")
         url = f"https://www.chessmanager.com/en/tournaments/{t.id}"
+        try:
+            data.results += download_results(url, t.name, t.rounds)
+            print()
+        except:
+            print('fail') # case when tournament is not finished yet
+            continue
         data.matches += download_matches(url, t.name, t.rounds)
-        data.results += download_results(url, t.name, t.rounds)
         for p in download_players(url):
             players[p.name] = p
         data.players = list(players.values())
+        save(filename, data)
     
 # download_matches('https://www.chessmanager.com/en/tournaments/6008432340500480', '#13.3', 7)
 # download_results('https://www.chessmanager.com/en/tournaments/6008432340500480', '#13.3', 7)
@@ -123,14 +129,12 @@ def update(data : Data, url : str, search_phrase : str):
 # data = load('./data.json')
 # update(data, 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix', 'Pomysł GrandPrix')
 
-def main():
-    filename = 'data/data.json'
+def update(filename):
     url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix'
     search_phrase = 'Pomysł GrandPrix'
 
-    data = load(filename) if os.path.isfile(filename) else Data([],[],[],[])
-    update(data, url, search_phrase)
-    save(filename, data)
+    data = load(filename) if os.path.isfile(filename) else Data([],[],[],[],[])
+    _update(filename, data, url, search_phrase)
 
 if __name__ == "__main__":
-    main()
+    update('data.json')
