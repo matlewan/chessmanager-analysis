@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 
@@ -7,58 +7,41 @@ const store = useStore()
 const router = useRouter()
 
 const showScore = ref(false)
-let allPlayers = ref([])
-let editions = ref(["1"])
-let edition = ref(editions.value.slice(-1)[0])
+const toEdition = (t => parseInt(t.split('.')[0].replace('#','')))
+const tournaments = Object.keys(store.state.data.tournaments)
+const editions = ref([...new Set(tournaments.map(toEdition))].reverse())
+const edition = ref(editions.value.slice(-1)[0])
+const subEditions = computed(() => tournaments.filter(s => s.startsWith(`#${edition.value}.`)).length)
+const sortBy = ref(-1)
 
-watch(() => store.state.data, () => {
-  editions.value = [...new Set(Object.keys(store.state.data?.tournaments || ["#1.1"]).map(t => parseInt(t.split('.')[0].replace('#',''))))].sort((a,b) => a-b)
-  edition.value = editions.value.slice(-1)[0]
-  update()
-})
-watch(edition, () => update())
-watch(showScore, () => update())
-
-onMounted(() => {
-  editions.value = [...new Set(Object.keys(store.state.data?.tournaments || ["#1.1"]).map(t => parseInt(t.split('.')[0].replace('#',''))))].sort((a,b) => a-b)
-  edition.value = editions.value.slice(-1)[0]
-  update()
-})
-
-function sortBy(col) {
+const allPlayers = computed(() => {
+  let players = {}
+  for (let i = 1; i <= 5; i++) {
+    let tournament = `#${edition.value}.${i}`
+    let results = store.state.data.results[tournament] || [];
+    for (let r of results) {
+      let dp = store.state.data.players[r.player]
+      const M = 1e9;
+      let p = players[r.player] = (players[r.player] || {pts: [0,0,0,0,0], name: dp['name'], title: dp['title'], place: [M,M,M,M,M]})
+      p.pts[i-1] = pts(r.place, r.points)
+      p.place[i-1] = r.place
+    }
+  }
+  const col = sortBy.value
   const compare = (col < 0) ? cmp : ((a,b) => a.place[col] - b.place[col])
-  allPlayers.value.sort(compare)
-}
+  return Object.keys(players).map(k => players[k]).sort(compare)
+})
 
 function cmp(p1, p2) {
   let arr = [points(p1)-points(p2), sum(p1)-sum(p2), best(p1)-best(p2)]
   return (arr < [0,0,0]) ? 1 : -1;
 }
 
-function update() {
-  let players = {}
-  for (let i = 1; i <= 5; i++) {
-    let tournament = `#${edition.value}.${i}`
-    let results = store.state.data?.results?.[tournament] || [];
-    for (let r of results) {
-      let dp = store.state.data['players'][r.player]
-      const M = 9999999999999999;
-      let p = players[r.player] = (players[r.player] || {pts: [0,0,0,0,0], name: dp['name'], title: dp['title'], place: [M,M,M,M,M]})
-      p.pts[i-1] = pts(r.place, r.points)
-      p.place[i-1] = r.place
-    }
-  }
-  players = Object.keys(players).map(k => players[k])
-  players.sort(cmp)
-  allPlayers.value = players
-}
-
-
 function pts(place, score) {
   return showScore.value ? score : score + (place>=16 ? 4 : [0,10,9,9,8,8,8,7,7,7,6,6,6,5,5,5][place])
 }
 function points(player) {
-  return sum(player) - Math.min(...player.pts)
+  return sum(player) - Math.min(...player.pts.slice(0, subEditions.value))
 }
 function sum(player) {
   return player.pts.reduce((a,b) => a+b)
@@ -101,14 +84,14 @@ function best(player) {
             <th>No.</th>
             <th class="title"></th>
             <th>Name</th>
-            <th @click="sortBy(-1)" class="link center">Pts</th>
+            <th @click="sortBy=-1" class="link center">Pts</th>
             <th class="title center">Sum</th>
             <th class="title center">Best</th>
-            <th @click="sortBy(0)" class="link center">#1</th>
-            <th @click="sortBy(1)" class="link center">#2</th>
-            <th @click="sortBy(2)" class="link center">#3</th>
-            <th @click="sortBy(3)" class="link center">#4</th>
-            <th @click="sortBy(4)" class="link center">#5</th>
+            <th @click="sortBy=0" class="link center">#1</th>
+            <th @click="sortBy=1" class="link center">#2</th>
+            <th @click="sortBy=2" class="link center">#3</th>
+            <th @click="sortBy=3" class="link center">#4</th>
+            <th @click="sortBy=4" class="link center">#5</th>
           </tr>
         </thead>
         <tbody>
