@@ -1,36 +1,37 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, toRaw } from 'vue'
 import Range from '@/components/Range.vue'
 
-const emit = defineEmits(['change'])
+const props = defineProps({
+    modelValue: Object
+})
+const emit = defineEmits(['update:modelValue'])
 
-let name = ref("")
-let birthdate = ref({min:undefined, max:undefined})
-let score = ref({min:undefined, max:undefined})
-let fide = ref({min:undefined, max:undefined})
-let rating = ref({min:undefined, max:undefined})
-let M = ref({min:undefined, max:undefined})
+const birthdate = ref({min:undefined, max:undefined})
+const score = ref({min:undefined, max:undefined})
+const rating = ref({min:undefined, max:undefined})
+const pomysl_rating = ref({min:undefined, max:undefined})
+const M = ref({min:undefined, max:undefined})
 
-watch([name,score,rating,M,fide,birthdate], () => {
+watch([score,pomysl_rating,M,rating,birthdate], () => {
   const filters = {
-    "name": name,
-    "birthdate": birthdate,
-    "score": score,
-    "fide": fide,
-    "rating": rating,
-    "M": M
+    birthdate: toRaw(birthdate.value),
+    score: toRaw(score.value),
+    rating: toRaw(rating.value),
+    pomysl_rating: toRaw(pomysl_rating.value),
+    M: toRaw(M.value)
   }
-  emit('change', filters)
+  emit('update:modelValue', filters)
 })
 </script>
 
 <template>
   <div class="filters">
-    <label for="name">Name:</label> <input v-model="name" id="name" />
+    <!-- <label for="name">Name:</label> <input v-model="name" id="name" /> -->
     <label for="birthdate">BYear:</label> <Range v-model="birthdate" id="birthdate" />
     <label for="score">Score:</label> <Range v-model="score" id="score" />
-    <label for="fide">FIDE:</label> <Range v-model="fide" id="fide" />
-    <label for="rating">Rating:</label> <Range v-model="rating" id="rating" />
+    <label for="rating">FIDE:</label> <Range v-model="rating" id="rating" />
+    <label for="pomysl_rating">Rating:</label> <Range v-model="pomysl_rating" id="pomysl_rating" />
     <label for="M">M:</label> <Range v-model="M" id="M" />
   </div>
 </template>

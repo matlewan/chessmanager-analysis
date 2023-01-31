@@ -1,41 +1,41 @@
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue'
+import { computed, ref, toRaw } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import Filters from '@/components/Filters.vue'
 
 const router = useRouter()
 const store = useStore()
-const ASC = -1, DESC = 1
-let sortMode = ref(DESC)
-let sortBy = ref("score")
-let allPlayers = ref([])
-let filters = ref({})
-let players = computed(() => {
-  let f = filters.value
-  let cmp = (a,b) => (a[sortBy.value] < b[sortBy.value] ? sortMode.value : -sortMode.value)
-  if (f.name === undefined) {
+const DESC = 1
+
+// Variables
+const sortMode = ref(DESC)
+const sortBy = ref("score")
+const filters = ref({})
+const fname = ref("")
+
+// Computed
+const allPlayers = computed(() => {
+  const list = store.state.data.players
+  return Object.keys(list).map(k => list[k])
+})
+const players = computed(() => {
+  const f = toRaw(filters.value)
+  const cmp = (a,b) => (a[sortBy.value] < b[sortBy.value] ? sortMode.value : -sortMode.value)
+  if (f.score === undefined) {
     return allPlayers.value.sort(cmp);
   }
-  const MAX = 999999999999
   return allPlayers.value
-    .filter(p => p.name.toLowerCase().includes((f.name || "").toLowerCase()))
-    .filter(p => p.birthdate >= (f.birthdate.min || 0) && p.birthdate <= (f.birthdate.max || MAX))
-    .filter(p => p.M >= (f.M.min || 0) && p.M <= (f.M.max || MAX))
-    .filter(p => p.score >= (f.score.min || 0) && p.score <= (f.score.max || MAX))
-    .filter(p => p.rating >= (f.fide.min || 0) && p.rating <= (f.fide.max || MAX))
-    .filter(p => p.pomysl_rating >= (f.rating.min || 0) && p.pomysl_rating <= (f.rating.max || MAX))
+    .filter(p => p.name.toLowerCase().includes(fname.value.toLowerCase()))
+    .filter(p => inRange(p.birthdate, f.birthdate))
+    .filter(p => inRange(p.M, f.M))
+    .filter(p => inRange(p.score, f.score))
+    .filter(p => inRange(p.rating, f.rating))
+    .filter(p => inRange(p.pomysl_rating, f.pomysl_rating))
     .sort(cmp)
 })
-onMounted(() => update())
-watch(() => store.state.data, () => update())
-function update() {
-  let list = store.state.data['players'] || [];
-  list = Object.keys(list).map(k => list[k])
-  list.sort((a,b) => b.pomysl_rating - a.pomysl_rating)
-  allPlayers.value = list
-}
 
+// Functions
 function sort(field) {
   if (field === sortBy.value) {
     sortMode.value = -sortMode.value
@@ -45,15 +45,18 @@ function sort(field) {
     sortMode.value = DESC
   }
 }
-
-function refresh(newFilters) {
-  filters.value = newFilters;
+function inRange(value, range) {
+  return (isNaN(range.min) || value >= range.min) && (isNaN(range.max) || value <= range.max)
 }
 </script>
 
 <template>
   <main>
     <div class="table">
+      <div class="row">
+        <label>Name:</label>
+        <input v-model="fname" />
+      </div>
       <table>
         <colgroup>
           <col width="50px" />
@@ -83,7 +86,7 @@ function refresh(newFilters) {
           <tr v-for="(p,i) in players" :id="p.name">
             <td class="center">{{ i+1 }}.</td>
             <td class="title  center">{{ p.title }}</td>
-            <td class="link" @click="router.push('/player?name=' + p.name)">{{ p.name }}</td>
+            <td class="link" @click="router.push(`/player?name=${p.name}`)">{{ p.name }}</td>
             <td class="center">{{ p.birthdate }}</td>
             <td class="center">{{ p.rating }}</td>
             <td class="center">{{ Math.round(p.pomysl_rating) }}</td>
@@ -94,7 +97,7 @@ function refresh(newFilters) {
         </tbody>
       </table>
     </div>
-    <Filters @change="refresh" />
+    <Filters v-model="filters" />
   </main>
 </template>
 
@@ -127,5 +130,12 @@ table {
   .title {
     display: none;
   }
+}
+.row {
+  margin: 10px 10px 10px 0px;
+}
+.row input {
+  margin-left: 10px;
+  width: 250px;
 }
 </style>
