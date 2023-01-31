@@ -23,7 +23,7 @@ const players = computed(() => {
   const f = toRaw(filters.value)
   const cmp = (a,b) => (a[sortBy.value] < b[sortBy.value] ? sortMode.value : -sortMode.value)
   if (f.score === undefined) {
-    return allPlayers.value.sort(cmp);
+    return []
   }
   return allPlayers.value
     .filter(p => p.name.toLowerCase().includes(fname.value.toLowerCase()))

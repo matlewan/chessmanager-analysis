@@ -18,9 +18,9 @@ function handleInput (e) {
 
 <template>
     <div class="range">
-        <input v-model="min" @focusout="handleInput" />
+        <input type="number" v-model="min" @focusout="handleInput" />
         <label> - </label>
-        <input v-model="max" @focusout="handleInput" />
+        <input type="number" v-model="max" @focusout="handleInput" />
     </div>
 </template>
 
