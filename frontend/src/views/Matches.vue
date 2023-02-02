@@ -1,10 +1,11 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
-import { useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const store = useStore()
 const query = useRoute().query
+const router = useRouter()
 
 const data = store.state.data
 const editions = ['All', ...new Set(Object.keys(data.tournaments).map(t => t.split('.')[0]).reverse())]
@@ -31,7 +32,17 @@ const matches = computed(() => !display.value ? [] : data.matches
 function result(r) {
   return r==1.0 ? '1 - 0' : (r==0.5 ? '½-½' : '0 - 1')
 }
-
+function setRound(t,r) {
+  const [a,b] = t.split('.')
+  edition.value = a
+  tournament.value = b
+  round.value = r
+}
+function setPlayer(p) {
+  round.value = 'All'
+  player.value = p
+  opponent.value = 'All'
+}
 </script>
 
 <template>
@@ -75,11 +86,11 @@ function result(r) {
         <tbody>
           <tr v-for="(m,i) in matches">
             <!-- <td class="center">{{ i+1 }}.</td> -->
-            <td class="center">{{ m.tournament }}</td>
-            <td class="center">{{ m.round }}</td>
-            <td>{{ m.white }}</td>
+            <td class="center link" @click="setRound(m.tournament, 'All')">{{ m.tournament }}</td>
+            <td class="center link" @click="setRound(m.tournament, m.round)">{{ m.round }}</td>
+            <td class="link" @click="setPlayer(m.white)">{{ m.white }}</td>
             <td class="center">{{ result(m.result) }}</td>
-            <td>{{ m.black }}</td>
+            <td class="link" @click="setPlayer(m.black)">{{ m.black }}</td>
           </tr>
         </tbody>
       </table>

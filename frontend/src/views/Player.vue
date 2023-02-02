@@ -65,7 +65,7 @@ const L = computed(() => players[name.value].L + players[name.value].D/2)
           <tr v-for="d in duels">
             <td @click="name=d.opponent" class="link">{{ d.opponent }}</td>
             <td class="center">{{ Math.round(d.rating) }}</td>
-            <td class="link center" @click="router.push('/matches?player=' + name + '&opponent=' + d.opponent)">{{ d.W }} - {{ d.L }}</td>
+            <td class="link center" @click="router.push(`/matches?player=${name}&opponent=${d.opponent}`)">{{ d.W }} - {{ d.L }}</td>
           </tr>
         </tbody>
       </table>

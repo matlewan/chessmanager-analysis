@@ -98,7 +98,7 @@ function best(player) {
           <tr v-for="(p,i) in allPlayers" :id="p.name">
             <td class="center">{{ i+1 }}.</td>
             <td class="title center">{{ p.title }}</td>
-            <td>{{ p.name }}</td>
+            <td class="link" @click="router.push(`/player?name=${p.name}`)">{{ p.name }}</td>
             <td class="center">{{ points(p).toFixed(1) }}</td>
             <td class="title center">{{ sum(p).toFixed(1) }}</td>
             <td class="title center">{{ best(p).toFixed(1) }}</td>
