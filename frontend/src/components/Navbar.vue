@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
   <header>
     <nav>
       <RouterLink to="/">GrandPrix</RouterLink>
-      <RouterLink to="/ratings">Ratings</RouterLink>
+      <RouterLink to="/players">Players</RouterLink>
       <!-- <RouterLink to="/player">Player</RouterLink> -->
       <!-- <RouterLink to="/matches">Matches</RouterLink> -->
     </nav>
