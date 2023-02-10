@@ -103,9 +103,6 @@ function best(player) {
 </template>
 
 <style scoped>
-table {
-  table-layout: fixed;
-}
 th {
   text-align: left;
   font-weight: 550;
@@ -117,7 +114,7 @@ th {
   text-align: center;
 }
 td.center {
-  padding: 0 2px;
+  padding: 0 5px;
 }
 table {
   margin-top: 10  px;

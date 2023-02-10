@@ -4,6 +4,12 @@ body {
   color: black;
 }
 
+table {
+  border-collapse: collapse;
+  table-layout:fixed;
+  width: max-content;
+}
+
 #app {
   margin: 0;
   padding: 0;

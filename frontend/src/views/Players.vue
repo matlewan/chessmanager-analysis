@@ -91,9 +91,6 @@ function inRange(value, range) {
 </template>
 
 <style scoped>
-table {
-  table-layout: fixed;
-}
 main {
   display: flex;
   flex-wrap: wrap;
@@ -110,7 +107,7 @@ th {
   text-align: center;
 }
 td.center {
-  padding: 0 2px;
+  padding: 0 5px;
 }
 table {
   margin-top: 10  px;

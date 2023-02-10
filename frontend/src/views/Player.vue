@@ -120,9 +120,6 @@ function chartOnClick(_event, obj) {
 </template>
 
 <style scoped>
-table {
-  table-layout: fixed;
-}
 th {
   text-align: left;
   font-weight: 550;
