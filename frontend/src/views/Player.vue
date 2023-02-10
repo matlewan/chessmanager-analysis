@@ -2,23 +2,46 @@
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
+import { Line } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement)
 
 const store = useStore()
-let name = ref(useRoute().query.name)
 const router = useRouter()
-
 const players = store.state.data.players
+const tournaments = Object.keys(store.state.data.tournaments).reverse()
 const names = Object.keys(players).sort()
+
+const name = ref(useRoute().query.name)
+const results = computed(() => tournaments.map(t => result(t, name.value)))
 const player = computed(() => players[name.value])
-const allDuels = store.state.data.duels
-const duels = computed(() => allDuels
-  .filter(d => d.player == name.value)
-  .filter(d => d.opponent != "No Opponent")
-  .map(d => ({ ...d, rating: players[d.opponent].pomysl_rating }))
-  .sort((a,b) => b.rating - a.rating)
+const duels = computed(() => 
+    store.state.data.duels
+      .filter(d => d.player == name.value)
+      .filter(d => d.opponent != "No Opponent")
+      .map(d => ({ ...d, rating: players[d.opponent].pomysl_rating }))
+      .sort((a,b) => b.rating - a.rating)
 )
 const W = computed(() => players[name.value].W + players[name.value].D/2)
 const L = computed(() => players[name.value].L + players[name.value].D/2)
+const chartData = computed(() => {
+  return {
+    labels: tournaments,
+    datasets: [ 
+      { label: name.value, data: results.value, borderColor: '#0078ba', backgroundColor: '#0078ba' } ,
+    ]
+  }
+})
+const chartOptions = {
+  scales: { y: { min: 0, max: 8 } },
+  responsive: true,
+  maintainAspectRatio: true, 
+}
+function result(t, name) {
+  const r = store.state.data.results[t].find(r => r.player == name)
+  return r ? parseFloat(r.points) : undefined
+}
 </script>
 
 <template>
@@ -49,6 +72,7 @@ const L = computed(() => players[name.value].L + players[name.value].D/2)
         </tr>
       </table>
     </div>
+    <Line type="line" :width="100" :data="chartData" :options="chartOptions" />
     <div class="table">
       <table>
         <col width="200px" />
@@ -107,10 +131,14 @@ label {
   margin: 5px 0;
   display: flex;
 }
-
 @media (max-width: 600px) {
   .title {
     display: none;
   }
+}
+canvas {
+  width: 100%;
+  max-width: 800px;
+  max-height: 400px;
 }
 </style>

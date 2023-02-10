@@ -62,19 +62,19 @@ function inRange(value, range) {
           <col width="50px" />
           <col class="title" width="50px" />
           <col width="200px" />
-          <col width="50px" />
+          <col class="title" width="50px" />
           <col width="36px" />
           <col width="36px" />
           <col width="36px" />
           <col width="36px" />
-          <col width="100px" />
+          <col class="title" width="100px" />
         </colgroup>
         <thead>
           <tr>
             <th>No.</th>
             <th class="title"></th>
             <th @click="sort('name')" class="link">Name</th>
-            <th @click="sort('birthdate')" class="link center">BYear</th>
+            <th @click="sort('birthdate')" class="title link center">BYear</th>
             <th @click="sort('rating')" class="link center">FIDE</th>
             <th @click="sort('pomysl_rating')" class="link center">Rating</th>
             <th @click="sort('score')" class="link center">Score</th>
@@ -87,7 +87,7 @@ function inRange(value, range) {
             <td class="center">{{ i+1 }}.</td>
             <td class="title  center">{{ p.title }}</td>
             <td class="link" @click="router.push(`/player?name=${p.name}`)">{{ p.name }}</td>
-            <td class="center">{{ p.birthdate }}</td>
+            <td class="title center">{{ p.birthdate }}</td>
             <td class="center">{{ p.rating }}</td>
             <td class="center">{{ Math.round(p.pomysl_rating) }}</td>
             <td class="center">{{ p.score.toFixed(2) }}</td>
