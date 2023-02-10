@@ -1,6 +1,20 @@
 {
   "tournaments": [
     {
+      "id": "5387813617926144",
+      "name": "#14.5",
+      "date": "08.02.2023",
+      "players": 32,
+      "rounds": 7
+    },
+    {
+      "id": "5101432379277312",
+      "name": "#14.4",
+      "date": "01.02.2023",
+      "players": 30,
+      "rounds": 7
+    },
+    {
       "id": "5115524234084352",
       "name": "#14.3",
       "date": "25.01.2023",
@@ -43002,6 +43016,1525 @@
       "white": "Pastwa Marcin",
       "black": "No Opponent",
       "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Dąbrowski Andrzej",
+      "black": "Licznerski Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Mazurkiewicz Michał",
+      "black": "Pastwa Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Rusche Bruno",
+      "black": "Pawłowski Rafał",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Huchwajda Łukasz",
+      "black": "Stanicka Paulina",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Stanicka Julia",
+      "black": "Grabianowski Krystian",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Andrzejewska Anna",
+      "black": "Piechel Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Humerczyk Hubert",
+      "black": "Kabziński Jan",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Bębnik Małgorzata",
+      "black": "Bystrzanowski Sylwester",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Chudziński Miłosz",
+      "black": "Truchel Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Mikołajczyk Marcin",
+      "black": "Kędzior Cezary",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Małek Marcin",
+      "black": "Zagozda Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Spiżewski Mikołaj",
+      "black": "Ratajska Dominika",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Szpakowski Mikołaj",
+      "black": "Borowiak Mateusz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Pilak Wiktor",
+      "black": "Szymszon Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 1,
+      "white": "Zarzycki Krzysztof",
+      "black": "Bystrzanowski Marek",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Licznerski Łukasz",
+      "black": "Bębnik Małgorzata",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Truchel Tomasz",
+      "black": "Mazurkiewicz Michał",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Pawłowski Rafał",
+      "black": "Mikołajczyk Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Zagozda Tomasz",
+      "black": "Huchwajda Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Grabianowski Krystian",
+      "black": "Spiżewski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Borowiak Mateusz",
+      "black": "Andrzejewska Anna",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Kabziński Jan",
+      "black": "Zarzycki Krzysztof",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Szymszon Łukasz",
+      "black": "Dąbrowski Andrzej",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Bystrzanowski Sylwester",
+      "black": "Pilak Wiktor",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Bystrzanowski Marek",
+      "black": "Humerczyk Hubert",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Pastwa Marcin",
+      "black": "Chudziński Miłosz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Kędzior Cezary",
+      "black": "Rusche Bruno",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Stanicka Paulina",
+      "black": "Małek Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Ratajska Dominika",
+      "black": "Stanicka Julia",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 2,
+      "white": "Piechel Mikołaj",
+      "black": "Szpakowski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Huchwajda Łukasz",
+      "black": "Licznerski Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Mazurkiewicz Michał",
+      "black": "Grabianowski Krystian",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Andrzejewska Anna",
+      "black": "Pawłowski Rafał",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Zarzycki Krzysztof",
+      "black": "Truchel Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Dąbrowski Andrzej",
+      "black": "Kabziński Jan",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Bębnik Małgorzata",
+      "black": "Pastwa Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Mikołajczyk Marcin",
+      "black": "Stanicka Paulina",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Rusche Bruno",
+      "black": "Zagozda Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Spiżewski Mikołaj",
+      "black": "Szymszon Łukasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Stanicka Julia",
+      "black": "Borowiak Mateusz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Pilak Wiktor",
+      "black": "Piechel Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Humerczyk Hubert",
+      "black": "Bystrzanowski Sylwester",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Małek Marcin",
+      "black": "Bystrzanowski Marek",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Chudziński Miłosz",
+      "black": "Ratajska Dominika",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 3,
+      "white": "Szpakowski Mikołaj",
+      "black": "Kędzior Cezary",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Licznerski Łukasz",
+      "black": "Mazurkiewicz Michał",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Pawłowski Rafał",
+      "black": "Huchwajda Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Grabianowski Krystian",
+      "black": "Pilak Wiktor",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Zagozda Tomasz",
+      "black": "Andrzejewska Anna",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Kabziński Jan",
+      "black": "Spiżewski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Borowiak Mateusz",
+      "black": "Bębnik Małgorzata",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Truchel Tomasz",
+      "black": "Humerczyk Hubert",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Zarzycki Krzysztof",
+      "black": "Mikołajczyk Marcin",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Bystrzanowski Marek",
+      "black": "Stanicka Julia",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Piechel Mikołaj",
+      "black": "Dąbrowski Andrzej",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Pastwa Marcin",
+      "black": "Szpakowski Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Szymszon Łukasz",
+      "black": "Rusche Bruno",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Stanicka Paulina",
+      "black": "Chudziński Miłosz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Bystrzanowski Sylwester",
+      "black": "Małek Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 4,
+      "white": "Kędzior Cezary",
+      "black": "Ratajska Dominika",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Mazurkiewicz Michał",
+      "black": "Pawłowski Rafał",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Andrzejewska Anna",
+      "black": "Licznerski Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Huchwajda Łukasz",
+      "black": "Kabziński Jan",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Bębnik Małgorzata",
+      "black": "Grabianowski Krystian",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Mikołajczyk Marcin",
+      "black": "Truchel Tomasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Spiżewski Mikołaj",
+      "black": "Zarzycki Krzysztof",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Humerczyk Hubert",
+      "black": "Zagozda Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Rusche Bruno",
+      "black": "Borowiak Mateusz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Pilak Wiktor",
+      "black": "Stanicka Paulina",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Szpakowski Mikołaj",
+      "black": "Bystrzanowski Marek",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Pastwa Marcin",
+      "black": "Piechel Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Dąbrowski Andrzej",
+      "black": "Kędzior Cezary",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Stanicka Julia",
+      "black": "Szymszon Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Chudziński Miłosz",
+      "black": "Bystrzanowski Sylwester",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 5,
+      "white": "Ratajska Dominika",
+      "black": "Małek Marcin",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Bębnik Małgorzata",
+      "black": "Mazurkiewicz Michał",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Licznerski Łukasz",
+      "black": "Mikołajczyk Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Zarzycki Krzysztof",
+      "black": "Huchwajda Łukasz",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Pawłowski Rafał",
+      "black": "Zagozda Tomasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Grabianowski Krystian",
+      "black": "Borowiak Mateusz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Bystrzanowski Marek",
+      "black": "Andrzejewska Anna",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Kabziński Jan",
+      "black": "Pilak Wiktor",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Truchel Tomasz",
+      "black": "Piechel Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Stanicka Paulina",
+      "black": "Spiżewski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Bystrzanowski Sylwester",
+      "black": "Dąbrowski Andrzej",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Szpakowski Mikołaj",
+      "black": "Rusche Bruno",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Szymszon Łukasz",
+      "black": "Humerczyk Hubert",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Kędzior Cezary",
+      "black": "Stanicka Julia",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Małek Marcin",
+      "black": "Chudziński Miłosz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 6,
+      "white": "Ratajska Dominika",
+      "black": "Pastwa Marcin",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Mazurkiewicz Michał",
+      "black": "Huchwajda Łukasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Grabianowski Krystian",
+      "black": "Licznerski Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Pawłowski Rafał",
+      "black": "Bębnik Małgorzata",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Andrzejewska Anna",
+      "black": "Zarzycki Krzysztof",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Piechel Mikołaj",
+      "black": "Kabziński Jan",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Zagozda Tomasz",
+      "black": "Mikołajczyk Marcin",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Rusche Bruno",
+      "black": "Truchel Tomasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Borowiak Mateusz",
+      "black": "Bystrzanowski Sylwester",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Pilak Wiktor",
+      "black": "Bystrzanowski Marek",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Humerczyk Hubert",
+      "black": "Stanicka Paulina",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Spiżewski Mikołaj",
+      "black": "Kędzior Cezary",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Dąbrowski Andrzej",
+      "black": "Szpakowski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Pastwa Marcin",
+      "black": "Małek Marcin",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Szymszon Łukasz",
+      "black": "Ratajska Dominika",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.4",
+      "round": 7,
+      "white": "Stanicka Julia",
+      "black": "Chudziński Miłosz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Mazurkiewicz Michał",
+      "black": "Bystrzanowski Marek",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Dąbrowski Andrzej",
+      "black": "Huchwajda Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Kozlowski Tomasz",
+      "black": "Stachowiak Magdalena",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Pastwa Marcin",
+      "black": "Simon Marek",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Grześkowiak Antoni",
+      "black": "Rusche Bruno",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Stanicka Paulina",
+      "black": "Kozłowska Marzena",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Kabziński Jan",
+      "black": "Stanicka Julia",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Hetmanski Marcin",
+      "black": "Włodarczak Damian",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Truchel Tomasz",
+      "black": "Knobel Adam",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Piechel Mikołaj",
+      "black": "Śledź Adam",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Ozdoba Norbert",
+      "black": "Bystrzanowski Sylwester",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Bączkowski Jakub",
+      "black": "Zagozda Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Spiżewski Mikołaj",
+      "black": "Ratajska Dominika",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Szpakowski Mikołaj",
+      "black": "Cieśluk Patryk",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Jurago Adam",
+      "black": "Szymszon Łukasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 1,
+      "white": "Zarzycki Krzysztof",
+      "black": "Pilak Wiktor",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Truchel Tomasz",
+      "black": "Mazurkiewicz Michał",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Huchwajda Łukasz",
+      "black": "Ozdoba Norbert",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Śledź Adam",
+      "black": "Kozlowski Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Simon Marek",
+      "black": "Spiżewski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Zagozda Tomasz",
+      "black": "Grześkowiak Antoni",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Kozłowska Marzena",
+      "black": "Jurago Adam",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Cieśluk Patryk",
+      "black": "Kabziński Jan",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Włodarczak Damian",
+      "black": "Zarzycki Krzysztof",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Pilak Wiktor",
+      "black": "Hetmanski Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Bystrzanowski Marek",
+      "black": "Knobel Adam",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Bystrzanowski Sylwester",
+      "black": "Dąbrowski Andrzej",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Stachowiak Magdalena",
+      "black": "Piechel Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Ratajska Dominika",
+      "black": "Pastwa Marcin",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Rusche Bruno",
+      "black": "Bączkowski Jakub",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Szymszon Łukasz",
+      "black": "Stanicka Paulina",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 2,
+      "white": "Stanicka Julia",
+      "black": "Szpakowski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Mazurkiewicz Michał",
+      "black": "Grześkowiak Antoni",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Kabziński Jan",
+      "black": "Huchwajda Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Kozlowski Tomasz",
+      "black": "Kozłowska Marzena",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Zarzycki Krzysztof",
+      "black": "Simon Marek",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Pilak Wiktor",
+      "black": "Włodarczak Damian",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Pastwa Marcin",
+      "black": "Truchel Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Rusche Bruno",
+      "black": "Śledź Adam",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Ozdoba Norbert",
+      "black": "Stanicka Julia",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Knobel Adam",
+      "black": "Zagozda Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Spiżewski Mikołaj",
+      "black": "Szymszon Łukasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Piechel Mikołaj",
+      "black": "Cieśluk Patryk",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Jurago Adam",
+      "black": "Bystrzanowski Sylwester",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Hetmanski Marcin",
+      "black": "Bystrzanowski Marek",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Dąbrowski Andrzej",
+      "black": "Bączkowski Jakub",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Szpakowski Mikołaj",
+      "black": "Stachowiak Magdalena",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 3,
+      "white": "Stanicka Paulina",
+      "black": "Ratajska Dominika",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Huchwajda Łukasz",
+      "black": "Mazurkiewicz Michał",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Simon Marek",
+      "black": "Kozlowski Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Kozłowska Marzena",
+      "black": "Kabziński Jan",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Grześkowiak Antoni",
+      "black": "Spiżewski Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Bystrzanowski Sylwester",
+      "black": "Truchel Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Śledź Adam",
+      "black": "Pilak Wiktor",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Cieśluk Patryk",
+      "black": "Ozdoba Norbert",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Zagozda Tomasz",
+      "black": "Zarzycki Krzysztof",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Włodarczak Damian",
+      "black": "Stanicka Paulina",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Stanicka Julia",
+      "black": "Jurago Adam",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Knobel Adam",
+      "black": "Dąbrowski Andrzej",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Stachowiak Magdalena",
+      "black": "Hetmanski Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Piechel Mikołaj",
+      "black": "Pastwa Marcin",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Szymszon Łukasz",
+      "black": "Rusche Bruno",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Bystrzanowski Marek",
+      "black": "Ratajska Dominika",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 4,
+      "white": "Bączkowski Jakub",
+      "black": "Szpakowski Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Kozlowski Tomasz",
+      "black": "Huchwajda Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Mazurkiewicz Michał",
+      "black": "Simon Marek",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Pilak Wiktor",
+      "black": "Grześkowiak Antoni",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Kabziński Jan",
+      "black": "Zarzycki Krzysztof",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Truchel Tomasz",
+      "black": "Cieśluk Patryk",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Włodarczak Damian",
+      "black": "Kozłowska Marzena",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Pastwa Marcin",
+      "black": "Śledź Adam",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Ozdoba Norbert",
+      "black": "Stachowiak Magdalena",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Rusche Bruno",
+      "black": "Zagozda Tomasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Spiżewski Mikołaj",
+      "black": "Bystrzanowski Sylwester",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Jurago Adam",
+      "black": "Knobel Adam",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Szpakowski Mikołaj",
+      "black": "Bystrzanowski Marek",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Dąbrowski Andrzej",
+      "black": "Szymszon Łukasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Stanicka Paulina",
+      "black": "Piechel Mikołaj",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Hetmanski Marcin",
+      "black": "Stanicka Julia",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 5,
+      "white": "Ratajska Dominika",
+      "black": "Bączkowski Jakub",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Huchwajda Łukasz",
+      "black": "Truchel Tomasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Kozłowska Marzena",
+      "black": "Mazurkiewicz Michał",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Grześkowiak Antoni",
+      "black": "Kabziński Jan",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Zarzycki Krzysztof",
+      "black": "Kozlowski Tomasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Simon Marek",
+      "black": "Pilak Wiktor",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Śledź Adam",
+      "black": "Jurago Adam",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Ozdoba Norbert",
+      "black": "Rusche Bruno",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Cieśluk Patryk",
+      "black": "Spiżewski Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Stanicka Julia",
+      "black": "Włodarczak Damian",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Zagozda Tomasz",
+      "black": "Stanicka Paulina",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Bystrzanowski Marek",
+      "black": "Bystrzanowski Sylwester",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Stachowiak Magdalena",
+      "black": "Knobel Adam",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Szymszon Łukasz",
+      "black": "Pastwa Marcin",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Piechel Mikołaj",
+      "black": "Dąbrowski Andrzej",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Bączkowski Jakub",
+      "black": "Hetmanski Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 6,
+      "white": "Ratajska Dominika",
+      "black": "Szpakowski Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Grześkowiak Antoni",
+      "black": "Huchwajda Łukasz",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Mazurkiewicz Michał",
+      "black": "Zarzycki Krzysztof",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Spiżewski Mikołaj",
+      "black": "Kozłowska Marzena",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Truchel Tomasz",
+      "black": "Simon Marek",
+      "result": 0.5
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Kabziński Jan",
+      "black": "Śledź Adam",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Kozlowski Tomasz",
+      "black": "Ozdoba Norbert",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Włodarczak Damian",
+      "black": "Bystrzanowski Marek",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Pilak Wiktor",
+      "black": "Zagozda Tomasz",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Pastwa Marcin",
+      "black": "Cieśluk Patryk",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Jurago Adam",
+      "black": "Stachowiak Magdalena",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Rusche Bruno",
+      "black": "Stanicka Julia",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Stanicka Paulina",
+      "black": "Bączkowski Jakub",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Knobel Adam",
+      "black": "Szymszon Łukasz",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Szpakowski Mikołaj",
+      "black": "Piechel Mikołaj",
+      "result": 0.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Bystrzanowski Sylwester",
+      "black": "Hetmanski Marcin",
+      "result": 1.0
+    },
+    {
+      "tournament": "#14.5",
+      "round": 7,
+      "white": "Dąbrowski Andrzej",
+      "black": "Ratajska Dominika",
+      "result": 1.0
     }
   ],
   "results": [
@@ -56780,6 +58313,502 @@
       "points": 1.0,
       "bch1": 15.5,
       "bch": 16.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Mazurkiewicz Michał",
+      "place": 1,
+      "points": 7.0,
+      "bch1": 26.5,
+      "bch": 29.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Licznerski Łukasz",
+      "place": 2,
+      "points": 6.0,
+      "bch1": 28.5,
+      "bch": 31.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Zarzycki Krzysztof",
+      "place": 3,
+      "points": 5.0,
+      "bch1": 24.0,
+      "bch": 27.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Kabziński Jan",
+      "place": 4,
+      "points": 5.0,
+      "bch1": 24.0,
+      "bch": 27.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Huchwajda Łukasz",
+      "place": 5,
+      "points": 4.5,
+      "bch1": 31.0,
+      "bch": 34.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Pawłowski Rafał",
+      "place": 6,
+      "points": 4.5,
+      "bch1": 28.5,
+      "bch": 31.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Bębnik Małgorzata",
+      "place": 7,
+      "points": 4.5,
+      "bch1": 28.5,
+      "bch": 31.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Mikołajczyk Marcin",
+      "place": 8,
+      "points": 4.5,
+      "bch1": 25.0,
+      "bch": 27.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Grabianowski Krystian",
+      "place": 9,
+      "points": 4.0,
+      "bch1": 28.5,
+      "bch": 30.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Andrzejewska Anna",
+      "place": 10,
+      "points": 4.0,
+      "bch1": 26.5,
+      "bch": 29.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Pilak Wiktor",
+      "place": 11,
+      "points": 4.0,
+      "bch1": 22.5,
+      "bch": 25.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Borowiak Mateusz",
+      "place": 12,
+      "points": 4.0,
+      "bch1": 21.5,
+      "bch": 23.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Piechel Mikołaj",
+      "place": 13,
+      "points": 4.0,
+      "bch1": 21.5,
+      "bch": 23.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Rusche Bruno",
+      "place": 14,
+      "points": 4.0,
+      "bch1": 19.5,
+      "bch": 21.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Stanicka Paulina",
+      "place": 15,
+      "points": 3.5,
+      "bch1": 22.0,
+      "bch": 23.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Humerczyk Hubert",
+      "place": 16,
+      "points": 3.5,
+      "bch1": 20.5,
+      "bch": 23.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Truchel Tomasz",
+      "place": 17,
+      "points": 3.0,
+      "bch1": 28.0,
+      "bch": 29.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Zagozda Tomasz",
+      "place": 18,
+      "points": 3.0,
+      "bch1": 25.0,
+      "bch": 27.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Dąbrowski Andrzej",
+      "place": 19,
+      "points": 3.0,
+      "bch1": 23.0,
+      "bch": 25.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Spiżewski Mikołaj",
+      "place": 20,
+      "points": 3.0,
+      "bch1": 22.5,
+      "bch": 22.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Bystrzanowski Sylwester",
+      "place": 21,
+      "points": 3.0,
+      "bch1": 21.5,
+      "bch": 22.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Bystrzanowski Marek",
+      "place": 22,
+      "points": 3.0,
+      "bch1": 21.0,
+      "bch": 23.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Szymszon Łukasz",
+      "place": 23,
+      "points": 3.0,
+      "bch1": 19.5,
+      "bch": 19.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Pastwa Marcin",
+      "place": 24,
+      "points": 2.5,
+      "bch1": 21.0,
+      "bch": 21.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Małek Marcin",
+      "place": 25,
+      "points": 2.5,
+      "bch1": 16.0,
+      "bch": 16.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Szpakowski Mikołaj",
+      "place": 26,
+      "points": 2.0,
+      "bch1": 20.5,
+      "bch": 22.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Kędzior Cezary",
+      "place": 27,
+      "points": 2.0,
+      "bch1": 18.5,
+      "bch": 18.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Stanicka Julia",
+      "place": 28,
+      "points": 2.0,
+      "bch1": 17.0,
+      "bch": 17.0
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Chudziński Miłosz",
+      "place": 29,
+      "points": 1.0,
+      "bch1": 16.5,
+      "bch": 16.5
+    },
+    {
+      "tournament": "#14.4",
+      "player": "Ratajska Dominika",
+      "place": 30,
+      "points": 0.0,
+      "bch1": 15.0,
+      "bch": 16.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Huchwajda Łukasz",
+      "place": 1,
+      "points": 6.0,
+      "bch1": 27.5,
+      "bch": 29.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Zarzycki Krzysztof",
+      "place": 2,
+      "points": 5.5,
+      "bch1": 26.5,
+      "bch": 29.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Kozłowska Marzena",
+      "place": 3,
+      "points": 5.5,
+      "bch1": 26.0,
+      "bch": 28.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Kabziński Jan",
+      "place": 4,
+      "points": 5.0,
+      "bch1": 29.0,
+      "bch": 31.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Grześkowiak Antoni",
+      "place": 5,
+      "points": 5.0,
+      "bch1": 27.5,
+      "bch": 30.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Mazurkiewicz Michał",
+      "place": 6,
+      "points": 4.5,
+      "bch1": 31.0,
+      "bch": 34.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Kozlowski Tomasz",
+      "place": 7,
+      "points": 4.5,
+      "bch1": 29.5,
+      "bch": 32.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Simon Marek",
+      "place": 8,
+      "points": 4.5,
+      "bch1": 27.0,
+      "bch": 30.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Truchel Tomasz",
+      "place": 9,
+      "points": 4.5,
+      "bch1": 25.0,
+      "bch": 28.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Śledź Adam",
+      "place": 10,
+      "points": 4.0,
+      "bch1": 24.5,
+      "bch": 27.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Ozdoba Norbert",
+      "place": 11,
+      "points": 4.0,
+      "bch1": 23.5,
+      "bch": 25.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Zagozda Tomasz",
+      "place": 12,
+      "points": 4.0,
+      "bch1": 23.5,
+      "bch": 25.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Spiżewski Mikołaj",
+      "place": 13,
+      "points": 4.0,
+      "bch1": 23.0,
+      "bch": 23.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Rusche Bruno",
+      "place": 14,
+      "points": 4.0,
+      "bch1": 22.0,
+      "bch": 24.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Włodarczak Damian",
+      "place": 15,
+      "points": 4.0,
+      "bch1": 21.0,
+      "bch": 22.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Pastwa Marcin",
+      "place": 16,
+      "points": 4.0,
+      "bch1": 21.0,
+      "bch": 21.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Jurago Adam",
+      "place": 17,
+      "points": 4.0,
+      "bch1": 20.5,
+      "bch": 22.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Pilak Wiktor",
+      "place": 18,
+      "points": 3.0,
+      "bch1": 27.0,
+      "bch": 28.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Cieśluk Patryk",
+      "place": 19,
+      "points": 3.0,
+      "bch1": 24.5,
+      "bch": 26.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Bystrzanowski Sylwester",
+      "place": 20,
+      "points": 3.0,
+      "bch1": 21.5,
+      "bch": 22.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Knobel Adam",
+      "place": 21,
+      "points": 3.0,
+      "bch1": 20.5,
+      "bch": 22.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Stachowiak Magdalena",
+      "place": 22,
+      "points": 3.0,
+      "bch1": 20.5,
+      "bch": 21.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Piechel Mikołaj",
+      "place": 23,
+      "points": 3.0,
+      "bch1": 18.0,
+      "bch": 20.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Bystrzanowski Marek",
+      "place": 24,
+      "points": 3.0,
+      "bch1": 17.5,
+      "bch": 17.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Bączkowski Jakub",
+      "place": 25,
+      "points": 3.0,
+      "bch1": 15.0,
+      "bch": 15.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Stanicka Julia",
+      "place": 26,
+      "points": 2.0,
+      "bch1": 23.0,
+      "bch": 24.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Stanicka Paulina",
+      "place": 27,
+      "points": 2.0,
+      "bch1": 21.5,
+      "bch": 21.5
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Szymszon Łukasz",
+      "place": 28,
+      "points": 2.0,
+      "bch1": 21.0,
+      "bch": 23.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Dąbrowski Andrzej",
+      "place": 29,
+      "points": 2.0,
+      "bch1": 20.0,
+      "bch": 20.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Szpakowski Mikołaj",
+      "place": 30,
+      "points": 2.0,
+      "bch1": 17.0,
+      "bch": 17.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Hetmanski Marcin",
+      "place": 31,
+      "points": 1.0,
+      "bch1": 19.0,
+      "bch": 21.0
+    },
+    {
+      "tournament": "#14.5",
+      "player": "Ratajska Dominika",
+      "place": 32,
+      "points": 0.0,
+      "bch1": 18.0,
+      "bch": 20.0
     }
   ],
   "players": [
@@ -57353,6 +59382,7 @@
       "club": "LKS \"Chrobry\" Gniezno",
       "birthdate": 2000,
       "rating": 1706,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -57498,6 +59528,7 @@
       "club": "",
       "birthdate": 1997,
       "rating": 1294,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -57507,10 +59538,10 @@
     },
     {
       "name": "Knobel Adam",
-      "title": "",
+      "title": "IV",
       "club": "",
       "birthdate": 1994,
-      "rating": 1000,
+      "rating": 1400,
       "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
@@ -57549,8 +59580,9 @@
       "name": "Zarzycki Krzysztof",
       "title": "",
       "club": "",
-      "birthdate": 1988,
+      "birthdate": 0,
       "rating": 1000,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -57627,10 +59659,11 @@
     },
     {
       "name": "Ozdoba Norbert",
-      "title": "",
+      "title": "III",
       "club": "",
       "birthdate": 1987,
-      "rating": 1000,
+      "rating": 1531,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -57785,7 +59818,7 @@
       "name": "Kędzior Cezary",
       "title": "",
       "club": "",
-      "birthdate": 0,
+      "birthdate": 1990,
       "rating": 1000,
       "id": 0,
       "pomysl_rating": 0.0,
@@ -58026,6 +60059,7 @@
       "club": "",
       "birthdate": 1984,
       "rating": 1400,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -58039,6 +60073,7 @@
       "club": "",
       "birthdate": 2001,
       "rating": 1400,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -58052,6 +60087,7 @@
       "club": "",
       "birthdate": 1990,
       "rating": 1819,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -58092,6 +60128,7 @@
       "club": "KS KORONA Zakrzewo",
       "birthdate": 1983,
       "rating": 1865,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -58131,6 +60168,7 @@
       "club": "",
       "birthdate": 2001,
       "rating": 1000,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -58640,7 +60678,7 @@
     },
     {
       "name": "Pilak Wiktor",
-      "title": "III",
+      "title": "II",
       "club": "",
       "birthdate": 1996,
       "rating": 1386,
@@ -59233,7 +61271,8 @@
       "title": "I++",
       "club": "LKS \"Piast\" Śrem",
       "birthdate": 1993,
-      "rating": 1713,
+      "rating": 1817,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -59442,6 +61481,7 @@
       "club": "",
       "birthdate": 1999,
       "rating": 1000,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -59664,6 +61704,7 @@
       "club": "KSz Sulechów",
       "birthdate": 1995,
       "rating": 1550,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,
@@ -59810,6 +61851,90 @@
       "club": "",
       "birthdate": 2002,
       "rating": 1000,
+      "pomysl_rating": 0.0,
+      "score": 0.0,
+      "M": 0,
+      "W": 0,
+      "D": 0,
+      "L": 0
+    },
+    {
+      "name": "Bębnik Małgorzata",
+      "title": "I++",
+      "club": "UKS SPARTA Białołęka",
+      "birthdate": 1998,
+      "rating": 1694,
+      "id": 0,
+      "pomysl_rating": 0.0,
+      "score": 0.0,
+      "M": 0,
+      "W": 0,
+      "D": 0,
+      "L": 0
+    },
+    {
+      "name": "Kozlowski Tomasz",
+      "title": "I++",
+      "club": "LKS \"Piast\" Śrem",
+      "birthdate": 1986,
+      "rating": 1846,
+      "id": 0,
+      "pomysl_rating": 0.0,
+      "score": 0.0,
+      "M": 0,
+      "W": 0,
+      "D": 0,
+      "L": 0
+    },
+    {
+      "name": "Kozłowska Marzena",
+      "title": "K++",
+      "club": "LKS \"Piast\" Śrem",
+      "birthdate": 1987,
+      "rating": 1764,
+      "id": 0,
+      "pomysl_rating": 0.0,
+      "score": 0.0,
+      "M": 0,
+      "W": 0,
+      "D": 0,
+      "L": 0
+    },
+    {
+      "name": "Włodarczak Damian",
+      "title": "I",
+      "club": "LKS \"Piast\" Śrem",
+      "birthdate": 1988,
+      "rating": 1693,
+      "id": 0,
+      "pomysl_rating": 0.0,
+      "score": 0.0,
+      "M": 0,
+      "W": 0,
+      "D": 0,
+      "L": 0
+    },
+    {
+      "name": "Cieśluk Patryk",
+      "title": "III",
+      "club": "KSz \"LECH-WSUS Poznań\"",
+      "birthdate": 1979,
+      "rating": 1391,
+      "id": 0,
+      "pomysl_rating": 0.0,
+      "score": 0.0,
+      "M": 0,
+      "W": 0,
+      "D": 0,
+      "L": 0
+    },
+    {
+      "name": "Stachowiak Magdalena",
+      "title": "II",
+      "club": "LKS \"Piast\" Śrem",
+      "birthdate": 1998,
+      "rating": 1273,
+      "id": 0,
       "pomysl_rating": 0.0,
       "score": 0.0,
       "M": 0,

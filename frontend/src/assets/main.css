@@ -7,7 +7,7 @@ body {
 table {
   border-collapse: collapse;
   table-layout:fixed;
-  width: max-content;
+  min-width: max-content;
 }
 
 #app {
