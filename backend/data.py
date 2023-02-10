@@ -45,8 +45,9 @@ class Tournament:
 class Duel:
     player : str
     opponent : str
-    W : float
-    L : float
+    W : int
+    D : int
+    L : int
 
 @dataclass
 class Data:

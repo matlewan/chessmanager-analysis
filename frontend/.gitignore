@@ -1,5 +1,6 @@
 # Custom
 /deploy.sh
+/public/out.json
 
 # Logs
 logs

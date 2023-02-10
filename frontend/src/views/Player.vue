@@ -23,8 +23,9 @@ const duels = computed(() =>
       .map(d => ({ ...d, rating: players[d.opponent].pomysl_rating }))
       .sort((a,b) => b.rating - a.rating)
 )
-const W = computed(() => players[name.value].W + players[name.value].D/2)
-const L = computed(() => players[name.value].L + players[name.value].D/2)
+const W = computed(() => players[name.value].W)
+const D = computed(() => players[name.value].D)
+const L = computed(() => players[name.value].L)
 const chartData = computed(() => {
   return {
     labels: tournaments,
@@ -60,7 +61,7 @@ function result(t, name) {
           <th>Rating</th>
           <th>Score</th>
           <th>M</th>
-          <th>Result</th>
+          <th>W - D - L</th>
         </tr>
         <tr>
           <td>{{ player.birthdate }}</td>
@@ -68,7 +69,7 @@ function result(t, name) {
           <td>{{ Math.round(player.pomysl_rating) }}</td>
           <td>{{ player.score.toFixed(2) }}</td>
           <td>{{ player.M }}</td>
-          <td>{{ W }} - {{ player.L }}</td>
+          <td>{{ W }} - {{ D }} - {{ L }}</td>
         </tr>
       </table>
     </div>
@@ -82,14 +83,14 @@ function result(t, name) {
           <tr>
             <th>Opponent</th>
             <th class="center">Rating</th>
-            <th class="center">Result</th>
+            <th class="center">W-D-L</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="d in duels">
             <td @click="name=d.opponent" class="link">{{ d.opponent }}</td>
             <td class="center">{{ Math.round(d.rating) }}</td>
-            <td class="link center" @click="router.push(`/matches?player=${name}&opponent=${d.opponent}`)">{{ d.W }} - {{ d.L }}</td>
+            <td class="link center" @click="router.push(`/matches?player=${name}&opponent=${d.opponent}`)">{{ d.W }}-{{ d.D }}-{{ d.L }}</td>
           </tr>
         </tbody>
       </table>

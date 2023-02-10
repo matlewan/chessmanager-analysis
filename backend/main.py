@@ -9,7 +9,7 @@ out = environ.get("OUTPUT_FILE")
 
 @app.route("/update")
 def hello_world():
-    return '<form action="/api/make_update" method="POST"><input type="submit" value="Update" /></form>'
+    return '<form action="/api/make_update" method="POST"><input style="margin:auto; height: 200px; width: 200px;" type="submit" value="Update" /></form>'
 
 @app.route("/make_update", methods=["GET", "POST"])
 def update_data():

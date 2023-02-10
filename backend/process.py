@@ -60,14 +60,16 @@ def process(in_file, out_file):
     duels = {}
     for m in matches:
         key = (m.white, m.black)
-        duels[key] = duel = duels.get(key, Duel(m.white, m.black, 0.0, 0.0))
-        duel.W += m.result
-        duel.L += 1.0-m.result
+        duels[key] = duel = duels.get(key, Duel(m.white, m.black, 0,0,0))
+        if m.result == 1.0: duel.W += 1
+        if m.result == 0.5: duel.D += 1
+        if m.result == 0.0: duel.L += 1        
 
         key = (m.black, m.white)
-        duels[key] = duel = duels.get(key, Duel(m.black, m.white, 0.0, 0.0))
-        duel.W += 1.0-m.result
-        duel.L += m.result
+        duels[key] = duel = duels.get(key, Duel(m.black, m.white, 0,0,0))
+        if m.result == 0.0: duel.W += 1
+        if m.result == 0.5: duel.D += 1
+        if m.result == 1.0: duel.L += 1        
 
     data.players = players
     data.matches = matches
@@ -78,4 +80,4 @@ def process(in_file, out_file):
         f.write(json.dumps(data, default=lambda o: o.__dict__))
 
 if __name__ == "__main__":
-    process('backend/data.json', 'frontend/pomysl-grandprix/public/out.json')
+    process('backend/data.json', 'frontend/public/out.json')
