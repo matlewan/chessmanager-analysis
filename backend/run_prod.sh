@@ -1,1 +1,1 @@
-nohup flask -e prod.env --app main run > log.out
+nohup /home/ubuntu/.local/bin/flask -e prod.env --app main run > log.out 2>&1 &

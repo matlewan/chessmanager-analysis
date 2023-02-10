@@ -14,7 +14,13 @@ const tournaments = Object.keys(store.state.data.tournaments).reverse()
 const names = Object.keys(players).sort()
 
 const name = ref(useRoute().query.name)
-const results = computed(() => tournaments.map(t => result(t, name.value)))
+const axisY = ref('points')
+
+const allAxisY = computed(() => { return {
+  points: tournaments.map(t => result(t, name.value, 'points')),
+  place: tournaments.map(t => result(t, name.value, 'place'))
+}})
+const results = computed(() => allAxisY.value[axisY.value])
 const player = computed(() => players[name.value])
 const duels = computed(() => 
     store.state.data.duels
@@ -34,14 +40,23 @@ const chartData = computed(() => {
     ]
   }
 })
-const chartOptions = {
-  scales: { y: { min: 0, max: 8 } },
-  responsive: true,
-  maintainAspectRatio: true, 
+const chartOptions = computed(() => { 
+  const data = results.value.filter(Number); 
+  return { 
+    scales: { y: { min: Math.min(...data)-1, max: Math.max(...data)+1 } },
+    responsive: true,
+    maintainAspectRatio: true, 
+    onClick: chartOnClick
+  }
+})
+function result(t, player, attr) {
+  const r = store.state.data.results[t].find(r => r.player == player)
+  return r ? parseFloat(r[attr]) : undefined
 }
-function result(t, name) {
-  const r = store.state.data.results[t].find(r => r.player == name)
-  return r ? parseFloat(r.points) : undefined
+function chartOnClick(_event, obj) {
+  const t = tournaments[obj[0].index]
+  const [a,b] = t.slice(1).split('.')
+  router.push(`/matches?edition=${a}&t=${b}&player=${name.value}`)
 }
 </script>
 
@@ -61,7 +76,7 @@ function result(t, name) {
           <th>Rating</th>
           <th>Score</th>
           <th>M</th>
-          <th>W - D - L</th>
+          <th>W-D-L</th>
         </tr>
         <tr>
           <td>{{ player.birthdate }}</td>
@@ -69,11 +84,17 @@ function result(t, name) {
           <td>{{ Math.round(player.pomysl_rating) }}</td>
           <td>{{ player.score.toFixed(2) }}</td>
           <td>{{ player.M }}</td>
-          <td>{{ W }} - {{ D }} - {{ L }}</td>
+          <td>{{ W }}-{{ D }}-{{ L }}</td>
         </tr>
       </table>
     </div>
     <Line type="line" :width="100" :data="chartData" :options="chartOptions" />
+    <div class="row">
+      <label>Axis Y:</label>
+      <select v-model="axisY">
+        <option v-for="n in ['points','place']">{{ n }}</option>
+      </select>
+    </div>
     <div class="table">
       <table>
         <col width="200px" />
