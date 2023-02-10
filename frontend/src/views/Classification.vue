@@ -68,16 +68,6 @@ function best(player) {
     </div>
     <div class="table">
       <table>
-        <col width="50px" />
-        <col class="title" width="50px" />
-        <col width="200px" />
-        <col width="36px" />
-        <col width="36px" />
-        <col width="36px" />
-        <col width="36px" />
-        <col width="36px" />
-        <col width="36px" />
-        <col width="36px" />
         <thead>
           <tr>
             <th>No.</th>
@@ -127,7 +117,7 @@ th {
   text-align: center;
 }
 td.center {
-  padding: 0 0;
+  padding: 0 2px;
 }
 table {
   margin-top: 10  px;

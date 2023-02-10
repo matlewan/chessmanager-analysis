@@ -58,17 +58,6 @@ function inRange(value, range) {
         <input v-model="fname" />
       </div>
       <table>
-        <colgroup>
-          <col width="50px" />
-          <col class="title" width="50px" />
-          <col width="200px" />
-          <col class="title" width="50px" />
-          <col width="36px" />
-          <col width="36px" />
-          <col width="36px" />
-          <col width="36px" />
-          <col class="title" width="100px" />
-        </colgroup>
         <thead>
           <tr>
             <th>No.</th>
@@ -121,7 +110,7 @@ th {
   text-align: center;
 }
 td.center {
-  padding: 0 0;
+  padding: 0 2px;
 }
 table {
   margin-top: 10  px;
