@@ -57,7 +57,7 @@ function inRange(value, range) {
         <label>Name:</label>
         <input v-model="fname" />
       </div>
-      <table>
+      <table class="fixed-table">
         <thead>
           <tr>
             <th>No.</th>

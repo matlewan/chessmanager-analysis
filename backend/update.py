@@ -31,7 +31,7 @@ def norm_player(player):
 
 def download_matches(tournament_url : str, tournament : str, rounds : int) -> list[Match]:
     matches = []
-    for round in range(1,8):
+    for round in range(1,rounds+1):
         round_url = f"{tournament_url}/rounds/{round}"
         matches += download_round(round_url, tournament, round)
     return matches

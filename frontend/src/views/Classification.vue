@@ -67,7 +67,7 @@ function best(player) {
       </div>
     </div>
     <div class="table">
-      <table>
+      <table class="fixed-table">
         <thead>
           <tr>
             <th>No.</th>
