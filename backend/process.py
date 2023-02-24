@@ -80,4 +80,4 @@ def process(in_file, out_file):
         f.write(json.dumps(data, default=lambda o: o.__dict__))
 
 if __name__ == "__main__":
-    process('backend/data.json', 'frontend/public/out.json')
+    process('data.json', '../frontend/public/out.json')
