@@ -32,20 +32,14 @@ def norm_player(player):
 def download_matches(tournament_url : str, tournament : str, rounds : int) -> list[Match]:
     matches = []
     for round in range(1,rounds+1):
-        round_url = f"{tournament_url}/rounds/{round}"
-        matches += download_round(round_url, tournament, round)
-    return matches
-
-def download_round(url : str, tournament : str, round : int) -> list[Match]:
-    matches = []
-    df = pd.read_html(url)[0]
-    for _,row in df.iterrows():
-        _, _, _, player1, _, _, result, _, _, player2, _, _, _ = row
-        white = norm_player(player1)
-        black = norm_player(player2)
-        result = {'0':0.0, '1':1.0}.get(result.split()[0], 0.5)
-        m = Match(tournament, round, white, black, result)
-        matches.append(m)
+        df = pd.read_html(f"{tournament_url}/rounds/{round}")[0]
+        for _,row in df.iterrows():
+            _, _, _, player1, _, _, result, _, _, player2, _, _, _ = row
+            white = norm_player(player1)
+            black = norm_player(player2)
+            result = {'0':0.0, '1':1.0}.get(result.split()[0], 0.5)
+            m = Match(tournament, round, white, black, result)
+            matches.append(m)
     return matches
 
 def download_results(tournament_url : str, tournament : str, rounds : int) -> list[Result]:
@@ -57,13 +51,13 @@ def download_results(tournament_url : str, tournament : str, rounds : int) -> li
         results.append(r)
     return results
 
-def download_tournaments(filter_url : str, search_phrase : str) -> list[Tournament]:
+def download_tournaments(filter_url : str) -> list[Tournament]:
     offset = 0
     tournaments = []
     while True:
         url = f"{filter_url}&offset={offset}"
-        print(offset, end=' ')
-        t = subdownload_tournaments(url, search_phrase)
+        print(f"Offset: {offset}")
+        t = subdownload_tournaments(url)
         if t == []:
             break
         tournaments += t
@@ -71,14 +65,12 @@ def download_tournaments(filter_url : str, search_phrase : str) -> list[Tourname
     print()
     return tournaments
 
-def subdownload_tournaments(url : str, search_phrase : str) -> list[Tournament]:
+def subdownload_tournaments(url : str) -> list[Tournament]:
     tournaments = []
     resp = requests.get(url)
     soup = bs4.BeautifulSoup(resp.content, "html.parser")
 
-    for a in soup.find_all('a', 'tournament'):
-        if search_phrase not in a.text:
-            continue
+    for a in soup.select('div.bottom a.tournament'):
         words = re.split(r'\s{2,}', a.text)
         id = a.attrs['href'].split('/')[-1]
         date = words[1]
@@ -100,10 +92,10 @@ def save(filename : str, data : object):
         jsonString = json.dumps(data, default=lambda o: o.__dict__, indent=2, ensure_ascii=False)
         file.write(jsonString)
 
-def _update(filename:str, data : Data, url : str, search_phrase : str):
+def _update(filename:str, data : Data, url : str):
     names = { r['tournament'] for r in data.results }
     players = {p['name'] : p for p in data.players}
-    data.tournaments = download_tournaments(url, search_phrase)
+    data.tournaments = download_tournaments(url)
     for t in data.tournaments[::-1]:
         if t.name in names:
             continue
@@ -131,10 +123,9 @@ def _update(filename:str, data : Data, url : str, search_phrase : str):
 
 def update(filename):
     url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix'
-    search_phrase = 'Pomysł GrandPrix'
 
     data = load(filename) if os.path.isfile(filename) else Data([],[],[],[],[])
-    _update(filename, data, url, search_phrase)
+    _update(filename, data, url)
 
 if __name__ == "__main__":
     update('data.json')
