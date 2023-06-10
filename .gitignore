@@ -1,5 +1,6 @@
 /backend/__pycache__
 /data
 /.ipynb_checkpoints
+/backend/data.json
 /src/__pycache__
 /frontend/public/out.json
