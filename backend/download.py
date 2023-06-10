@@ -1,7 +1,10 @@
+import datetime
 import bs4
 import json
 import os
+from dacite import from_dict
 import pandas as pd
+import re
 import requests
 from data import *
 
@@ -20,32 +23,33 @@ def download_players(tournament_url : str) -> list[Result]:
 
 def norm_player(player):
     try:
-        p = player.replace(', ', ' ').replace(',', ' ')
-        x = p.split()
-        return f"{x[0]} {x[1]}"
+        p = re.sub(r', ?', ' ', player)
+        return re.sub(r' \(.*', '', p).strip()
     except:
         return player
 
 
-def download_matches(tournament_url : str, tournament : str, rounds : int) -> list[Match]:
-    matches = []
-    for round in range(1,rounds+1):
-        df = pd.read_html(f"{tournament_url}/rounds/{round}")[0]
+def download_rounds(tournament_url : str, n_rounds : int) -> list[Match]:
+    rounds = []
+    for n_round in range(1,n_rounds+1):
+        round = Round(n_round, [])
+        df = pd.read_html(f"{tournament_url}/rounds/{n_round}")[0]
         for _,row in df.iterrows():
             _, _, _, player1, _, _, result, _, _, player2, _, _, _ = row
             white = norm_player(player1)
             black = norm_player(player2)
             result = {'0':0.0, '1':1.0}.get(result.split()[0], 0.5)
-            m = Match(tournament, round, white, black, result)
-            matches.append(m)
-    return matches
+            m = Match(white, black, result)
+            round.matches.append(m)
+        rounds.append(round)
+    return rounds
 
-def download_results(tournament_url : str, tournament : str, rounds : int) -> list[Result]:
-    df = pd.read_html(f'{tournament_url}/results/{rounds}')[0]
+def download_results(tournament_url : str) -> list[Result]:
+    df = pd.read_html(f'{tournament_url}/results')[0]
     results = []
     for _,row in df.iterrows():
         place, _, _, player, _, _, _, pts, bch1, bch, _, _, _, _, _ = row
-        r = Result(tournament, norm_player(player), int(place), float(pts), float(bch1), float(bch))
+        r = Result(norm_player(player), int(place), float(pts), float(bch1), float(bch))
         results.append(r)
     return results
 
@@ -74,36 +78,33 @@ def download_tournaments_page(url : str, offset: int) -> list[Tournament]:
             continue # avoid download when tournament is not completed yet
         tname = tname.split()[-1]
         tname = tname if '.' in tname else ('#1.' + tname[-1])
-        t = Tournament(id, tname, date, time_control, rounds_total)
+        t = Tournament(id, tname, date, time_control, rounds_total, None, None)
         tournaments.append(t)
     return tournaments
 
-def load(filename : str) -> Data:
-    with open(filename) as file:
-        j = json.load(file)
-        return Data(**j)
+def load(filename: str) -> Data:
+    with open(filename) as f:
+        return from_dict(data_class=Data, data=json.load(f))
 
-def save(filename : str, data : Data):
-    with open(filename, 'w') as file:
-        jsonString = json.dumps(data, default=lambda o: o.__dict__, indent=2, ensure_ascii=False)
-        file.write(jsonString)
+def save(filename: str, data: Data):
+    with open(filename, 'w') as f:
+        f.write(json.dumps(data, default=lambda o: o.__dict__))
 
-def update(filename:str, url : str):
-    data = load(filename) if os.path.isfile(filename) else Data([],[],[],[],[])
-    names = { r['tournament'] for r in data.results }
-    players = {p['name'] : p for p in data.players}
-    data.tournaments = download_tournaments(url)
-    for t in data.tournaments[::-1]:
-        if t.name in names:
+def download(filename:str, url: str):
+    data = load(filename) if os.path.isfile(filename) else Data([])
+    tournaments = download_tournaments(url)
+    for t in tournaments:
+        if any(x.id==t.id for x in data.tournaments):
             continue
         print(t.name)
         url = f"https://www.chessmanager.com/en/tournaments/{t.id}"
-        data.results += download_results(url, t.name, t.rounds)
-        data.matches += download_matches(url, t.name, t.rounds)
-        for p in download_players(url):
-            players[p.name] = p
-        data.players = list(players.values())
+        t.results = download_results(url)
+        t.rounds = download_rounds(url, t.n_rounds)
+        data.tournaments.append(t)
+        data.tournaments.sort(key=lambda t: datetime.datetime.strptime(t.date, '%d.%m.%Y').date())
         save(filename, data)
     
 if __name__ == "__main__":
-    update('data.json', 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix')
+    url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix'
+    # url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix+%232'
+    download('data.json', url)

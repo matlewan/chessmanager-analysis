@@ -4,9 +4,7 @@ from dacite import from_dict
 from glicko2 import Glicko2
 
 def process(in_file, out_file):
-
-    with open(in_file) as f:
-        data : Data = from_dict(data_class=Data, data=json.load(f))
+    data = load(in_file)
         
     tournaments = {t.name:t for t in data.tournaments}
     players = {p.name:p for p in data.players}
@@ -76,8 +74,16 @@ def process(in_file, out_file):
     data.duels = list(duels.values())
     data.tournaments = tournaments
     data.results = results
-    with open(out_file, 'w') as f:
+    save(out_file, data)
+
+def load(filename: str) -> Data:
+    with open(filename) as f:
+        return from_dict(data_class=Data, data=json.load(f))
+    
+def save(filename: str, data: Data):
+    with open(filename, 'w') as f:
         f.write(json.dumps(data, default=lambda o: o.__dict__))
+
 
 if __name__ == "__main__":
     process('data.json', '../frontend/public/out.json')

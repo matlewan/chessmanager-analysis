@@ -1,5 +1,5 @@
 from flask import Flask, redirect
-from update import update
+from download import download
 from process import process
 from os import environ
 
@@ -13,6 +13,6 @@ def hello_world():
 
 @app.route("/make_update", methods=["GET", "POST"])
 def update_data():
-    update(inp)
+    download(inp)
     process(inp, out)
     return redirect("https://pomysl.mateuszdev.com")
