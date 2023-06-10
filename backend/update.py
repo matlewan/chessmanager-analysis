@@ -2,9 +2,7 @@ import bs4
 import json
 import os
 import pandas as pd
-import re
 import requests
-
 from data import *
 
 def download_players(tournament_url : str) -> list[Result]:
@@ -55,30 +53,28 @@ def download_tournaments(filter_url : str) -> list[Tournament]:
     offset = 0
     tournaments = []
     while True:
-        url = f"{filter_url}&offset={offset}"
         print(f"Offset: {offset}")
-        t = subdownload_tournaments(url)
+        t = download_tournaments_page(filter_url, offset)
         if t == []:
-            break
+            break # no tournaments on page with given offset
         tournaments += t
         offset += 50
     print()
     return tournaments
 
-def subdownload_tournaments(url : str) -> list[Tournament]:
+def download_tournaments_page(url : str, offset: int) -> list[Tournament]:
     tournaments = []
-    resp = requests.get(url)
+    resp = requests.get(f"{url}&offset={offset}")
     soup = bs4.BeautifulSoup(resp.content, "html.parser")
-
     for a in soup.select('div.bottom a.tournament'):
-        words = re.split(r'\s{2,}', a.text)
+        date, rounds, tname, time_control = [div.text.strip().split('\n')[0] for div in a.select('div.header')]
         id = a.attrs['href'].split('/')[-1]
-        date = words[1]
-        rounds = int(words[2].split('/')[0])
-        tname = words[3].split()[-1]
+        rounds_finished, rounds_total = map(int, rounds.split()[0].split('/')) # words[2] == 7/7 rund
+        if rounds_finished < rounds_total:
+            continue # avoid download when tournament is not completed yet
+        tname = tname.split()[-1]
         tname = tname if '.' in tname else ('#1.' + tname[-1])
-        players = int(words[5].split()[0])
-        t = Tournament(id, tname, date, players, rounds)
+        t = Tournament(id, tname, date, time_control, rounds_total)
         tournaments.append(t)
     return tournaments
 
@@ -87,45 +83,27 @@ def load(filename : str) -> Data:
         j = json.load(file)
         return Data(**j)
 
-def save(filename : str, data : object):
+def save(filename : str, data : Data):
     with open(filename, 'w') as file:
         jsonString = json.dumps(data, default=lambda o: o.__dict__, indent=2, ensure_ascii=False)
         file.write(jsonString)
 
-def _update(filename:str, data : Data, url : str):
+def update(filename:str, url : str):
+    data = load(filename) if os.path.isfile(filename) else Data([],[],[],[],[])
     names = { r['tournament'] for r in data.results }
     players = {p['name'] : p for p in data.players}
     data.tournaments = download_tournaments(url)
     for t in data.tournaments[::-1]:
         if t.name in names:
             continue
-        print(t.name, end=" ")
+        print(t.name)
         url = f"https://www.chessmanager.com/en/tournaments/{t.id}"
-        try:
-            data.results += download_results(url, t.name, t.rounds)
-            print()
-        except:
-            print('fail') # case when tournament is not finished yet
-            continue
+        data.results += download_results(url, t.name, t.rounds)
         data.matches += download_matches(url, t.name, t.rounds)
         for p in download_players(url):
             players[p.name] = p
         data.players = list(players.values())
         save(filename, data)
     
-# download_matches('https://www.chessmanager.com/en/tournaments/6008432340500480', '#13.3', 7)
-# download_results('https://www.chessmanager.com/en/tournaments/6008432340500480', '#13.3', 7)
-# download_players('https://www.chessmanager.com/en/tournaments/6008432340500480')
-# download_tournaments('https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix', 'Pomysł GrandPrix')
-# save('./data.json', data)
-# data = load('./data.json')
-# update(data, 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix', 'Pomysł GrandPrix')
-
-def update(filename):
-    url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix'
-
-    data = load(filename) if os.path.isfile(filename) else Data([],[],[],[],[])
-    _update(filename, data, url)
-
 if __name__ == "__main__":
-    update('data.json')
+    update('data.json', 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix')

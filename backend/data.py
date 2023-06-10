@@ -38,7 +38,7 @@ class Tournament:
     id : str
     name : str
     date : str
-    players : int
+    time_control : str
     rounds : int
 
 @dataclass
