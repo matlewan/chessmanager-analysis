@@ -8,8 +8,7 @@ Application for downloading and analysing data from chess tournaments from chess
 
     ```
     cd backend
-    python process.py
-    python update.py
+    python download.py
     ```
 
 2. Run backend server
