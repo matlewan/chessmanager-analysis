@@ -48,7 +48,7 @@ def download_results(tournament_url : str) -> list[Result]:
     df = pd.read_html(f'{tournament_url}/results')[0]
     results = []
     for _,row in df.iterrows():
-        place, _, _, player, _, _, _, pts, bch1, bch, _, _, _, _, _ = row
+        place, _, _, title, player, _, _, _, pts, bch1, bch, _, _, _, _, _ = row
         r = Result(norm_player(player), int(place), float(pts), float(bch1), float(bch))
         results.append(r)
     return results
