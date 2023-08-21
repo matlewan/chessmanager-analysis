@@ -50,7 +50,7 @@ const chartOptions = computed(() => {
   }
 })
 function result(t, player, attr) {
-  const r = store.state.data.results[t].find(r => r.player == player)
+  const r = store.state.data.tournaments[t].results.find(r => r.player == player)
   return r ? parseFloat(r[attr]) : undefined
 }
 function chartOnClick(_event, obj) {

@@ -1,18 +1,16 @@
 import json
+import os
 from data import *
 from dacite import from_dict
 from glicko2 import Glicko2
+from datetime import datetime
 
 def process(in_file, out_file):
     data = load(in_file)
         
     tournaments = {t.name:t for t in data.tournaments}
-    players = {p.name:p for p in data.players}
-    matches = data.matches
-    results = {}
-    for r in data.results:
-        results[r.tournament] = results.get(r.tournament, [])
-        results[r.tournament].append(r)
+    players = {p.name:p for t in data.tournaments for p in t.players}
+    matches = [m for t in data.tournaments for r in t.rounds for m in r.matches]
 
     NO_OPPONENT = 'No Opponent'
 
@@ -35,6 +33,7 @@ def process(in_file, out_file):
         
     # Calculate score and "Pomysł GrandPrix" rating
     glicko = Glicko2(tau=0.5)
+    players = {k:v for k,v in players.items() if v.M > 0}
     for p in players.values():
         p.score = round((p.W + p.D/2) * 7 / p.M, 2)
         rd = 500 if p.rating in [1000,1200,1400,1600,1800] else 50
@@ -70,15 +69,19 @@ def process(in_file, out_file):
         if m.result == 1.0: duel.L += 1        
 
     data.players = players
-    data.matches = matches
     data.duels = list(duels.values())
     data.tournaments = tournaments
-    data.results = results
     save(out_file, data)
 
-def load(filename: str) -> Data:
-    with open(filename) as f:
-        return from_dict(data_class=Data, data=json.load(f))
+def load(directory: str) -> Data:
+    os.makedirs(directory, exist_ok=True)
+    data = Data([])
+    for filename in os.listdir(directory):
+        with open(f"{directory}/{filename}") as f:
+            tournament = from_dict(data_class=Tournament, data=json.load(f))
+            data.tournaments.append(tournament)
+    data.tournaments = sorted(data.tournaments, key=lambda t: datetime.strptime(t.date, '%d.%m.%Y'))[::-1]
+    return data
     
 def save(filename: str, data: Data):
     with open(filename, 'w') as f:
@@ -86,4 +89,4 @@ def save(filename: str, data: Data):
 
 
 if __name__ == "__main__":
-    process('data.json', '../frontend/public/out.json')
+    process('data/pomysl-grand-prix/tournaments', '../frontend/public/out.json')

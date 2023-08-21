@@ -78,20 +78,28 @@ def download_tournaments_page(url : str, offset: int) -> list[Tournament]:
             continue # avoid download when tournament is not completed yet
         tname = tname.split()[-1]
         tname = tname if '.' in tname else ('#1.' + tname[-1])
-        t = Tournament(id, tname, date, time_control, rounds_total, None, None)
+        t = Tournament(id, tname, date, time_control, rounds_total, None, None, None)
         tournaments.append(t)
     return tournaments
 
-def load(filename: str) -> Data:
-    with open(filename) as f:
-        return from_dict(data_class=Data, data=json.load(f))
+def load(directory: str) -> Data:
+    os.makedirs(directory, exist_ok=True)
+    data = Data([])
+    for filename in os.listdir(directory):
+        with open(f"{directory}/{filename}") as f:
+            tournament = from_dict(data_class=Tournament, data=json.load(f))
+            data.tournaments.append(tournament)
+    return data
 
-def save(filename: str, data: Data):
-    with open(filename, 'w') as f:
-        f.write(json.dumps(data, default=lambda o: o.__dict__))
+def save(directory: str, data: Data):
+    os.makedirs(directory, exist_ok=True)
+    for tournament in data.tournaments:
+        filename = f"{directory}/{tournament.name}.json"
+        with open(filename, 'w') as f:
+            f.write(json.dumps(tournament, default=lambda o: o.__dict__))
 
-def download(filename:str, url: str):
-    data = load(filename) if os.path.isfile(filename) else Data([])
+def download(directory:str, url: str):
+    data = load(directory)
     tournaments = download_tournaments(url)
     for t in tournaments:
         if any(x.id==t.id for x in data.tournaments):
@@ -100,11 +108,12 @@ def download(filename:str, url: str):
         url = f"https://www.chessmanager.com/en/tournaments/{t.id}"
         t.results = download_results(url)
         t.rounds = download_rounds(url, t.n_rounds)
+        t.players = download_players(url)
         data.tournaments.append(t)
         data.tournaments.sort(key=lambda t: datetime.datetime.strptime(t.date, '%d.%m.%Y').date())
-        save(filename, data)
+        save(directory, data)
     
 if __name__ == "__main__":
     url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix'
     # url = 'https://www.chessmanager.com/en/tournaments?name=Pomys%C5%82+GrandPrix+%232'
-    download('data.json', url)
+    download('data/pomysl-grand-prix/tournaments', url)

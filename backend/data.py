@@ -1,6 +1,4 @@
 from dataclasses import dataclass
-from typing import Optional
-from datetime import date
 
 @dataclass
 class Match:
@@ -43,8 +41,9 @@ class Tournament:
     date : str
     time_control : str
     n_rounds: int
-    results: list[Result]
+    players: list[Player]
     rounds: list[Round]
+    results: list[Result]
 
 @dataclass
 class Duel:

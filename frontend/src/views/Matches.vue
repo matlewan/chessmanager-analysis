@@ -21,7 +21,18 @@ const opponent = ref(query?.opponent || 'All')
 const display = computed(() => 
   !(edition.value == 'All' || tournament.value == 'All') || player.value != 'All'
 )
-const matches = computed(() => !display.value ? [] : data.matches
+const allMatches = computed(() => {
+    let ans = []
+    for (const t of Object.values(data.tournaments)) {
+      for (const r of t.rounds) {
+        for (const m of r.matches)
+          ans.push({ tournament:t.name, round:r.num, ...m })
+      }
+    }
+    return ans;
+  }
+)
+const matches = computed(() => !display.value ? [] : allMatches.value
   .filter(m => edition.value == 'All' || m.tournament.startsWith(edition.value))
   .filter(m => tournament.value == 'All' || m.tournament.startsWith(edition.value + '.' + tournament.value))
   .filter(m => round.value == 'All' || m.round == round.value)
