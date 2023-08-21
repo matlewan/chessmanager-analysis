@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { Line } from 'vue-chartjs'
+import { Scatter } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement)
@@ -33,17 +33,21 @@ const W = computed(() => players[name.value].W)
 const D = computed(() => players[name.value].D)
 const L = computed(() => players[name.value].L)
 const chartData = computed(() => {
+  const data = results.value.map((y,x) => {return {x:x, y:y}})
   return {
     labels: tournaments,
     datasets: [ 
-      { label: name.value, data: results.value, borderColor: '#0078ba', backgroundColor: '#0078ba' } ,
+      { label: name.value, data: data, borderColor: '#0078ba', backgroundColor: '#0078ba' } ,
     ]
   }
 })
 const chartOptions = computed(() => { 
   const data = results.value.filter(Number); 
   return { 
-    scales: { y: { min: Math.min(...data)-1, max: Math.max(...data)+1 } },
+    scales: { 
+      y: { min: Math.min(...data)-1, max: Math.max(...data)+1 },
+      x: { ticks: { callback: i => tournaments[i] } }
+    },
     responsive: true,
     maintainAspectRatio: true, 
     onClick: chartOnClick
@@ -88,7 +92,7 @@ function chartOnClick(_event, obj) {
         </tr>
       </table>
     </div>
-    <Line type="line" :width="100" :data="chartData" :options="chartOptions" />
+    <Scatter :width="100" :data="chartData" :options="chartOptions" />
     <div class="row">
       <label>Axis Y:</label>
       <select v-model="axisY">
