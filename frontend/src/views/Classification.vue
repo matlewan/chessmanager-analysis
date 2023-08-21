@@ -20,7 +20,7 @@ const allPlayers = computed(() => {
     let tournament = `#${edition.value}.${i}`
     let results = store.state.data.tournaments[tournament].results || [];
     for (let r of results) {
-      let dp = store.state.data.players[r.player]
+      let dp = store.state.data.players[r.player] || { name: r.player, title: '' }
       const M = Number.MAX_VALUE;
       let p = players[r.player] = (players[r.player] || {pts: [0,0,0,0,0], name: dp['name'], title: dp['title'], place: [M,M,M,M,M]})
       p.pts[i-1] = pts(r.place, r.points)
