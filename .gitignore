@@ -1,5 +1,6 @@
 /backend/__pycache__
-/backend/data
+/backend/data/
+/backend-python/data/
 /data
 /.ipynb_checkpoints
 /backend/data.json

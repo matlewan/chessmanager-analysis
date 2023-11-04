@@ -18,7 +18,8 @@ const axisY = ref('points')
 
 const allAxisY = computed(() => { return {
   points: tournaments.map(t => result(t, name.value, 'points')),
-  place: tournaments.map(t => result(t, name.value, 'place'))
+  place: tournaments.map(t => result(t, name.value, 'place')),
+  'score %': tournaments.map(t => result(t, name.value, 'score %'))
 }})
 const results = computed(() => allAxisY.value[axisY.value])
 const player = computed(() => players[name.value])
@@ -45,7 +46,7 @@ const chartOptions = computed(() => {
   const data = results.value.filter(Number); 
   return { 
     scales: { 
-      y: { min: Math.min(...data)-1, max: Math.max(...data)+1 },
+      y: { min: 0, max: Math.max(...data)+1 },
       x: { ticks: { callback: i => tournaments[i] } }
     },
     responsive: true,
@@ -54,8 +55,13 @@ const chartOptions = computed(() => {
   }
 })
 function result(t, player, attr) {
-  const r = store.state.data.tournaments[t].results.find(r => r.player == player)
-  return r ? parseFloat(r[attr]) : undefined
+  const tournament = store.state.data.tournaments[t]
+  const r = tournament.results.find(r => r.player == player)
+  if (!r)
+    return undefined
+  if (attr === 'score %')
+    return (r.points*100 / tournament.n_rounds).toFixed(0)
+  return parseFloat(r[attr])
 }
 function chartOnClick(_event, obj) {
   const t = tournaments[obj[0].index]
@@ -86,7 +92,7 @@ function chartOnClick(_event, obj) {
           <td>{{ player.birthdate }}</td>
           <td>{{ player.rating }}</td>
           <td>{{ Math.round(player.pomysl_rating) }}</td>
-          <td>{{ player.score.toFixed(2) }}</td>
+          <td>{{ player.score.toFixed(1) }}%</td>
           <td>{{ player.M }}</td>
           <td>{{ W }}-{{ D }}-{{ L }}</td>
         </tr>
@@ -96,7 +102,7 @@ function chartOnClick(_event, obj) {
     <div class="row">
       <label>Axis Y:</label>
       <select v-model="axisY">
-        <option v-for="n in ['points','place']">{{ n }}</option>
+        <option v-for="n in ['points','place','score %']">{{ n }}</option>
       </select>
     </div>
     <div class="table">

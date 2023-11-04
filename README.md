@@ -4,11 +4,14 @@ Application for downloading and analysing data from chess tournaments from chess
 
 ---
 
+0. Checkout main branch
+
 1. Download data from chessmanager.com to JSON file
 
     ```
     cd backend
     python download.py
+    python process.py
     ```
 
 2. Run backend server
@@ -19,6 +22,7 @@ Application for downloading and analysing data from chess tournaments from chess
 
 3. Run frontend website (development mode)
     ```
+    cd frontend
     npm run dev
     ```
 

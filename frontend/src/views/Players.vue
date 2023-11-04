@@ -79,7 +79,7 @@ function inRange(value, range) {
             <td class="title center">{{ p.birthdate }}</td>
             <td class="center">{{ p.rating }}</td>
             <td class="center">{{ Math.round(p.pomysl_rating) }}</td>
-            <td class="center">{{ p.score.toFixed(2) }}</td>
+            <td class="center">{{ p.score.toFixed(1) }}%</td>
             <td class="center">{{ p.M }}</td>
             <td class="title center">{{ p.W }}-{{ p.D }}-{{ p.L }}</td>
           </tr>
