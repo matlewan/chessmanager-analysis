@@ -48,7 +48,11 @@ def download_results(tournament_url : str) -> list[Result]:
     df = pd.read_html(f'{tournament_url}/results')[0]
     results = []
     for _,row in df.iterrows():
-        place, _, _, title, player, _, _, _, pts, bch1, bch, _, _, _, _, _ = row
+        try:
+            place, _, _, title, player, _, _, _, pts, bch1, bch, _, _, _, _, _ = row
+        except:
+            place, _, _, title, player, _, _, _, pts, _, _, _, _ = row
+            bch1 = bch = 0
         r = Result(norm_player(player), int(place), float(pts), float(bch1), float(bch))
         results.append(r)
     return results
@@ -70,14 +74,15 @@ def download_tournaments_page(url : str, offset: int) -> list[Tournament]:
     tournaments = []
     resp = requests.get(f"{url}&offset={offset}")
     soup = bs4.BeautifulSoup(resp.content, "html.parser")
-    for a in soup.select('div.bottom a.tournament'):
-        date, rounds, tname, time_control = [div.text.strip().split('\n')[0] for div in a.select('div.header')]
+    for a in soup.select('a.red.card'):
+        text = a.text
         id = a.attrs['href'].split('/')[-1]
-        rounds_finished, rounds_total = map(int, rounds.split()[0].split('/')) # words[2] == 7/7 rund
-        if rounds_finished < rounds_total:
-            continue # avoid download when tournament is not completed yet
-        tname = tname.split()[-1]
-        tname = tname if '.' in tname else ('#1.' + tname[-1])
+        tname = re.findall(r'Pomysł GrandPrix \S+', text)[0]
+        date = re.findall(r'\d\d.\d\d.\d\d\d\d', text)[0]
+        # players = int(re.findall(r'\d+\s+players', text)[0].split()[0])
+        rounds_str = re.findall(r'\d+/\d+\s+rounds', text)[0]
+        rounds_total = int(rounds_str.split()[0].split('/')[1])
+        time_control = re.findall(r'players\s+\S+', text)[0].split()[1]
         t = Tournament(id, tname, date, time_control, rounds_total, None, None, None)
         tournaments.append(t)
     return tournaments

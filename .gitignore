@@ -1,6 +1,7 @@
-/backend/__pycache__
+/backend-python/__pycache__
+/backend-python/launch.json
+.vscode
 /backend/data/
-/backend-python/data/
 /data
 /.ipynb_checkpoints
 /backend/data.json
