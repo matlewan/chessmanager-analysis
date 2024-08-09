@@ -9,16 +9,12 @@ Application for downloading and analysing data from chess tournaments from chess
 1. Download data from chessmanager.com to JSON file
 
     ```
-    cd backend
+    cd backend-python
     python download.py
     python process.py
     ```
 
-2. Run backend server
-    ```
-    cd backend
-    ./run_prod.sh
-    ```
+2. Ensure that file `frontend/public/out.json` has been generated
 
 3. Run frontend website (development mode)
     ```
