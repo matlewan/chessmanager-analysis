@@ -7,7 +7,12 @@ from datetime import datetime
 
 def process(in_file, out_file):
     data = load(in_file)
-        
+    
+    for t in data.tournaments:
+        t.name = t.name.replace('Pomysł GrandPrix ', '')
+        if t.name in ["#1", "#2", "#3", "#4", "#5"]:
+            t.name = '#1.' + t.name[-1] # fix (normalize) tournament name for 1st edition of tournaments
+    
     tournaments = {t.name:t for t in data.tournaments}
     players = {p.name:p for t in data.tournaments for p in t.players}
     matches = [m for t in data.tournaments for r in t.rounds for m in r.matches]
