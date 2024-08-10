@@ -40,7 +40,7 @@ def process(in_file, out_file):
     glicko = Glicko2(tau=0.5)
     players = {k:v for k,v in players.items() if v.M > 0}
     for p in players.values():
-        p.score = round((p.W + p.D/2) * 7 / p.M, 2)
+        p.score = round((p.W + p.D/2) * 100 / p.M, 2)
         rd = 500 if p.rating in [1000,1200,1400,1600,1800] else 50
         p.pomysl_rating = glicko.create_rating(p.rating, rd)
 
