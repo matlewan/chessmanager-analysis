@@ -15,7 +15,7 @@ const store = createStore({
 })
 app.use(router)
 app.use(store)
-fetch('/out.json')
+fetch('./out.json')
    .then(resp => resp.json())
    .then(data => {
       store.state.data = data;

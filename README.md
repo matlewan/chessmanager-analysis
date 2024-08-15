@@ -22,7 +22,8 @@ Application for downloading and analysing data from chess tournaments from chess
     npm run dev
     ```
 
-4. Run frontend website (production mode):
+4. Build for production:
+    - add `--base` to deploy project under a nested public path
     ```
-    npm run build
+    npx vite build --base=/pomysl-grandprix/
     ```
