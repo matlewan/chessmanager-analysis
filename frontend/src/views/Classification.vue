@@ -18,7 +18,7 @@ const allPlayers = computed(() => {
   let players = {}
   for (let i = 1; i <= 5; i++) {
     let tournament = `#${edition.value}.${i}`
-    let results = store.state.data.tournaments[tournament].results || [];
+    let results = store.state.data.tournaments[tournament]?.results || [];
     for (let r of results) {
       let dp = store.state.data.players[r.player] || { name: r.player, title: '' }
       const M = Number.MAX_VALUE;
