@@ -9,6 +9,7 @@ const router = useRouter()
 
 const data = toRaw(store.state.data)
 const tournament = data.tournaments['#' + query.name]
+const numRounds = tournament.n_rounds;
 const round = ref('1')
 
 const edition = ref(query.edition ? ('#' + query.edition) : 'All')
@@ -20,9 +21,6 @@ if (!query.edition && !query.t && !query.player) {
   tournament.value = lastTournament % 10
   round.value = 1
 }
-const display = computed(() => 
-  !(edition.value == 'All' || tournament.value == 'All') || player.value != 'All'
-)
 const allMatches = computed(() => {
     let ans = []
     for (const t of Object.values(data.tournaments)) {
@@ -34,19 +32,15 @@ const allMatches = computed(() => {
     return ans;
   }
 )
-const matches = computed(() => !display.value ? [] : allMatches.value
-  .filter(m => edition.value == 'All' || m.tournament.startsWith(edition.value))
-  .filter(m => tournament.value == 'All' || m.tournament.startsWith(edition.value + '.' + tournament.value))
-  .filter(m => round.value == 'All' || m.round == round.value)
+const matches = computed(() => allMatches.value
+  .filter(m => m.tournament == tournament.name)
+  .filter(m => round.value=='All' || m.round == round.value)
   .filter(m => player.value == 'All' || m.white == player.value || m.black == player.value)
   .filter(m => opponent.value == 'All' || m.white == opponent.value || m.black == opponent.value)
 )
-const showResults = computed(() => (edition.value == 'All' || tournament.value != 'All'))
 const results = computed(() => {
-  const key = edition.value + '.' + tournament.value;
-  const t = data.tournaments[key];
-  const r = t.results;
-  const playersMap = t.players.reduce((map, player) => {
+  const r = tournament.results;
+  const playersMap = tournament.players.reduce((map, player) => {
     map[player.name] = player;
     return map
   }, {});
@@ -59,10 +53,7 @@ const results = computed(() => {
 function result(r) {
   return r==1.0 ? '1 : 0' : (r==0.5 ? '½:½' : '0 : 1')
 }
-function setRound(t,r) {
-  const [a,b] = t.split('.')
-  edition.value = a
-  tournament.value = b
+function setRound(r) {
   player.value = 'All'
   round.value = r
 }
@@ -81,9 +72,9 @@ function setPlayer(p) {
     <div class="filters">
       <div class="rounds">
         <div class="round" @click="round=(round==1 ? 1 : round-1)">&lt;</div>
-        <div :class="['round', i==round ? 'selected' : '']" v-for="i in 9"
-          @click="round = i">{{ i }}</div>
-        <div class="round" @click="round=(round==9 ? 9 : round+1)">&gt;</div>
+        <div :class="['round', i==round ? 'selected' : '']" v-for="i in numRounds"
+          @click="setRound(i)">{{ i }}</div>
+        <div class="round" @click="round=(round==numRounds ? numRounds : round+1)">&gt;</div>
       </div>
     </div>
     <div class="games">
