@@ -8,11 +8,30 @@ from datetime import datetime
 def process(in_file, out_file):
     data = load(in_file)
     
+    # Fix (normalize) tournament name for 1st edition of tournaments
     for t in data.tournaments:
         t.name = t.name.replace('Pomysł GrandPrix ', '')
         if t.name in ["#1", "#2", "#3", "#4", "#5"]:
-            t.name = '#1.' + t.name[-1] # fix (normalize) tournament name for 1st edition of tournaments
+            t.name = '#1.' + t.name[-1]
+
+    # Fix (merge) player names where 'ł' was typed as 'l'
+    all_names = [p.name for t in data.tournaments for p in t.players]
+    names = {}
+    for name in all_names:
+        norm = normalize(name)
+        if norm not in names or normalize_score(names[norm]) > normalize_score(name):
+            names[norm] = name
+    for t in data.tournaments:
+        for p in t.players:
+            p.name = names.get(normalize(p.name), p.name)
+        for r in t.results:
+            r.player = names.get(normalize(r.player), r.player)
+        for r in t.rounds:
+            for m in r.matches:
+                m.white = names.get(normalize(m.white), m.white)
+                m.black = names.get(normalize(m.black), m.black)
     
+    # Initialize data
     tournaments = {t.name:t for t in data.tournaments}
     players = {p.name:p for t in data.tournaments for p in t.players}
     matches = [m for t in data.tournaments for r in t.rounds for m in r.matches]
@@ -92,6 +111,12 @@ def save(filename: str, data: Data):
     with open(filename, 'w') as f:
         f.write(json.dumps(data, default=lambda o: o.__dict__))
 
+def normalize(word):
+    d = str.maketrans('żółćęśąźń','zolcesazn')
+    return word.lower().translate(d)
+
+def normalize_score(word):
+    return len([c for c in word if c in 'abcdefghijklmnopqrstuvwxyz' and c.islower()])
 
 if __name__ == "__main__":
     process('data/pomysl-grand-prix/tournaments', '../frontend/public/out.json')
