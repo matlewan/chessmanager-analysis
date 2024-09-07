@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, toRaw } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -7,17 +7,19 @@ const store = useStore()
 const query = useRoute().query
 const router = useRouter()
 
-const data = store.state.data
-const editions = ['All', ...new Set(Object.keys(data.tournaments).map(t => t.split('.')[0]).reverse())]
-const tournaments = computed(() => ['All', 1,2,3,4,5])
-const rounds = computed(() => ['All', 1, 2, 3, 4, 5, 6, 7])
-const players = computed(() => ['All', ...Object.keys(data.players).sort()])
+const data = toRaw(store.state.data)
+const tournament = data.tournaments['#' + query.name]
+const round = ref('1')
 
 const edition = ref(query.edition ? ('#' + query.edition) : 'All')
-const tournament = ref(query.t || 'All')
-const round = ref('All')
 const player = ref(query?.player || 'All')
 const opponent = ref(query?.opponent || 'All')
+if (!query.edition && !query.t && !query.player) {
+  const lastTournament = Math.max(...Object.keys(data.tournaments).map(t => parseInt(t.replace('#','').replace('.',''))))
+  edition.value = '#' + Math.floor(lastTournament/10)
+  tournament.value = lastTournament % 10
+  round.value = 1
+}
 const display = computed(() => 
   !(edition.value == 'All' || tournament.value == 'All') || player.value != 'All'
 )
@@ -39,14 +41,29 @@ const matches = computed(() => !display.value ? [] : allMatches.value
   .filter(m => player.value == 'All' || m.white == player.value || m.black == player.value)
   .filter(m => opponent.value == 'All' || m.white == opponent.value || m.black == opponent.value)
 )
+const showResults = computed(() => (edition.value == 'All' || tournament.value != 'All'))
+const results = computed(() => {
+  const key = edition.value + '.' + tournament.value;
+  const t = data.tournaments[key];
+  const r = t.results;
+  const playersMap = t.players.reduce((map, player) => {
+    map[player.name] = player;
+    return map
+  }, {});
+  for (const rr of r) {
+    rr.p = playersMap[rr.player]
+  }
+  return r;
+});
 
 function result(r) {
-  return r==1.0 ? '1 - 0' : (r==0.5 ? '½-½' : '0 - 1')
+  return r==1.0 ? '1 : 0' : (r==0.5 ? '½:½' : '0 : 1')
 }
 function setRound(t,r) {
   const [a,b] = t.split('.')
   edition.value = a
   tournament.value = b
+  player.value = 'All'
   round.value = r
 }
 function setPlayer(p) {
@@ -58,52 +75,49 @@ function setPlayer(p) {
 
 <template>
   <main>
+    <h2 class="tournament">
+      Tournament {{ tournament.name }}
+    </h2>
     <div class="filters">
-      <div class="row">
-        <label>Tournament:</label>
-        <select v-model="edition"> <option v-for="e in editions">{{ e }}</option> </select>
-        <select v-model="tournament"> <option v-for="t in tournaments">{{ t }}</option> </select>
-        <label>Round:</label>
-        <select v-model="round"> <option v-for="r in rounds">{{ r }}</option> </select>
-      </div>
-      <div class="row">
-        <label>Player 1:</label>
-        <select class="name" v-model="player"> <option v-for="p in players">{{ p }}</option> </select>
-      </div>
-      <div class="row">
-        <label>Player 2:</label>
-        <select class="name" v-model="opponent"> <option v-for="p in players">{{ p }}</option> </select>
+      <div class="rounds">
+        <div class="round" @click="round=(round==1 ? 1 : round-1)">&lt;</div>
+        <div :class="['round', i==round ? 'selected' : '']" v-for="i in 9"
+          @click="round = i">{{ i }}</div>
+        <div class="round" @click="round=(round==9 ? 9 : round+1)">&gt;</div>
       </div>
     </div>
-    <span class="warn" v-if="!display">Select more filters</span>
-    <div class="table">
+    <div class="games">
       <table>
-        <!-- <col width="50px" /> -->
-        <col width="60px" />
-        <col width="36px" />
-        <col width="200px" />
-        <col width="80px" />
-        <col width="200px" />
-        <thead>
-          <tr>
-            <!-- <th>No.</th> -->
-            <th class="center">Tour.</th>
-            <th class="center">R.</th>
-            <th>White</th>
-            <th class="center">Result</th>
-            <th>Black</th>
-          </tr>
-        </thead>
         <tbody>
           <tr v-for="(m,i) in matches">
-            <!-- <td class="center">{{ i+1 }}.</td> -->
-            <td class="center link" @click="setRound(m.tournament, 'All')">{{ m.tournament }}</td>
-            <td class="center link" @click="setRound(m.tournament, m.round)">{{ m.round }}</td>
-            <td class="link" @click="setPlayer(m.white)">{{ m.white }}</td>
-            <td class="center">{{ result(m.result) }}</td>
-            <td class="link" @click="setPlayer(m.black)">{{ m.black }}</td>
+            <!-- <td>{{ i+1 }}.</td> -->
+            <td class="name white" @click="setPlayer(m.white)">{{ m.white }}</td>
+            <td>{{ result(m.result) }}</td>
+            <td class="name black" @click="setPlayer(m.black)">{{ m.black }}</td>
           </tr>
         </tbody>
+      </table>
+    </div>
+    <div class="results">
+      <table>
+        <table>
+          <thead>
+            <th>#</th>
+            <th class="name">Player</th>
+            <th>Pts</th>
+            <th>BHC1</th>
+            <th>BH</th>
+          </thead>
+          <tbody>
+            <tr v-for="r in results">
+             <td>{{ r.place }}.</td>
+             <td class="name">{{ r.p.name }}</td>
+             <td>{{ r.points.toFixed(1) }}</td>
+             <td>{{ r.bch1.toFixed(1) }}</td>
+             <td>{{ r.bch.toFixed(1) }}</td> 
+            </tr>
+          </tbody>
+        </table>
       </table>
     </div>
   </main>
@@ -114,33 +128,59 @@ th {
   text-align: left;
   font-weight: 550;
 }
-.num {
-  text-align: right;
-}
-.center {
+td {
+  padding: 0 0.3em;
   text-align: center;
 }
-td.center {
-  padding: 0 5px;
+td.name {
+  width: calc(10em + 4vw);
+  text-align: left;
 }
-table {
-  margin-top: 10  px;
+div.results {
+  margin-top: .5em;
+  padding-top: .5em;
+  border-top: 1px dashed black;
 }
-select {
-  margin: 5px 10px;
-  height: 25px;
-  width: 50px;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-select.name {
-  width: 200px;
+.tournament {
+  margin-top: 0.5em;
 }
-.warn {
-  color: orange;
+.filters {
+  margin: 0.5em 0;
+  line-height: 2em;
+  display: grid;
+  grid-template-columns: 1fr;
 }
-
-@media (max-width: 600px) {
-  .title {
-    display: none;
-  }
+.rounds {
+  display: flex;
+}
+.round {
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid black;
+  margin-right: -1px;
+  width: 2em;
+  height: 2em;
+  background-color: rgb(199, 238, 218);
+  text-align: center;
+}
+.round.selected {
+  background-color: rgb(149,188,168);
+}
+.games td.white {
+  text-align: right;
+}
+.games {
+  display: inline;
+}
+.results th,td {
+  text-align: center;
+}
+.results th.name {
+  text-align: left;
 }
 </style>

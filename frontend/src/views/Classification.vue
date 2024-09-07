@@ -49,12 +49,15 @@ function sum(player) {
 function best(player) {
   return Math.max(...player.pts)
 }
+function format(points) {
+  return (points == 0) ? "-" : points.toFixed(1);
+}
 
 </script>
 
 <template>
   <main>
-    <div class="row">
+    <div class="filter">
       <div>
         <label>Edition:</label>
         <select v-model="edition">
@@ -66,71 +69,63 @@ function best(player) {
         <label>Score</label>
       </div>
     </div>
-    <div class="table">
-      <table class="fixed-table">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th class="title"></th>
-            <th>Name</th>
-            <th @click="sortBy=-1" class="link center">Pts</th>
-            <th class="title center">Sum</th>
-            <th class="title center">Best</th>
-            <th @click="sortBy=0" class="link center">#1</th>
-            <th @click="sortBy=1" class="link center">#2</th>
-            <th @click="sortBy=2" class="link center">#3</th>
-            <th @click="sortBy=3" class="link center">#4</th>
-            <th @click="sortBy=4" class="link center">#5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(p,i) in allPlayers" :id="p.name">
-            <td class="center">{{ i+1 }}.</td>
-            <td class="title center">{{ p.title }}</td>
-            <td class="link" @click="router.push(`/player?name=${p.name}`)">{{ p.name }}</td>
-            <td class="center">{{ points(p).toFixed(1) }}</td>
-            <td class="title center">{{ sum(p).toFixed(1) }}</td>
-            <td class="title center">{{ best(p).toFixed(1) }}</td>
-            <td v-for="t in 5" class="link center" 
-              @click="router.push(`/matches?edition=${edition}&t=${t}&player=${p.name}`)">
-              {{ p.pts[t-1].toFixed(1) }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th class="center">#</th>
+          <th class="title"></th>
+          <th class="name">Name</th>
+          <th @click="sortBy=-1" class="link center">Pts</th>
+          <th class="title center">Sum</th>
+          <th class="title center tournament-best">Best</th>
+          <th @click="sortBy=0" class="link tournament-cell">#1</th>
+          <th @click="sortBy=1" class="link tournament-cell">#2</th>
+          <th @click="sortBy=2" class="link tournament-cell">#3</th>
+          <th @click="sortBy=3" class="link tournament-cell">#4</th>
+          <th @click="sortBy=4" class="link tournament-cell">#5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(p,i) in allPlayers" :id="p.name">
+          <td class="center">{{ i+1 }}.</td>
+          <td class="title center">{{ p.title }}</td>
+          <td class="name link" @click="router.push(`/player?name=${p.name}`)">{{ p.name }}</td>
+          <td class="center">{{ points(p).toFixed(1) }}</td>
+          <td class="title center">{{ sum(p).toFixed(1) }}</td>
+          <td class="title center tournament-best">{{ best(p).toFixed(1) }}</td>
+          <td v-for="t in 5" class="link tournament-cell" 
+            @click="router.push(`/tournaments?edition=${edition}&t=${t}&player=${p.name}`)">
+            {{ format(p.pts[t-1]) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </main>
 </template>
 
 <style scoped>
 th {
-  text-align: left;
   font-weight: 550;
 }
-.num {
-  text-align: right;
+table {
+  margin: 5px auto;
+  max-width: calc(100% - 1em);
 }
-.center {
+th,td {
+  width: 3em;
   text-align: center;
 }
-td.center {
-  padding: 0 5px;
-}
-table {
-  margin-top: 10  px;
+th.name, td.name {
+  width: 15em;
+  text-align: left;
 }
 select {
   margin: 10px;
   height: 25px;
   width: 50px;
 }
-
-@media (max-width: 600px) {
-  .title {
-    display: none;
-  }
-}
-.row {
+.filter {
+  justify-content: center;
   display: flex;
 }
 label {
@@ -141,5 +136,10 @@ input[type=checkbox] {
   height: 25px;
   margin: 10px 5px;
   vertical-align: middle;
+}
+@media (max-width: 500px) {
+  .tournament-cell {
+    display: none;
+  }
 }
 </style>

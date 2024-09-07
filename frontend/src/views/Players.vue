@@ -60,7 +60,7 @@ function inRange(value, range) {
       <table class="fixed-table">
         <thead>
           <tr>
-            <th>No.</th>
+            <th class="center">#</th>
             <th class="title"></th>
             <th @click="sort('name')" class="link">Name</th>
             <th @click="sort('birthdate')" class="title link center">BYear</th>
@@ -110,7 +110,10 @@ td.center {
   padding: 0 5px;
 }
 table {
-  margin-top: 10  px;
+  margin-top: 10px;
+}
+div.table {
+  margin: 0 auto;
 }
 @media (max-width: 650px) {
   .title {
@@ -118,6 +121,7 @@ table {
   }
 }
 .row {
+  display: none;
   margin: 10px 10px 10px 0px;
 }
 .row input {

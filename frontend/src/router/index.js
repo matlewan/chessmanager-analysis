@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Classification from '@/views/Classification.vue'
 import Players from '@/views/Players.vue'
-import Matches from '@/views/Matches.vue'
+import Tournaments from '@/views/Tournaments.vue'
 import Player from '@/views/Player.vue'
+import Matches from '@/views/Matches.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,7 +17,11 @@ const router = createRouter({
       component: Players
     },
     {
-      path: '/matches',
+      path: '/tournaments',
+      component: Tournaments
+    },
+    {
+      path: '/tournament',
       component: Matches
     },
     {

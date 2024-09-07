@@ -8,14 +8,13 @@ import Navbar from '@/components/Navbar.vue'
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
-  main {
-    margin: 0 100px;
-  }
+main {
+  max-width: 100%;
+  margin: 0 auto;
 }
-@media (max-width: 1024px) {
-  main {
-    margin: 0 5px;
+@media (max-width: 500px) {
+  body {
+    
   }
 }
 </style>

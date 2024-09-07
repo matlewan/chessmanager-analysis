@@ -73,7 +73,7 @@ input {
   width: 300px;
 }
 .row {
-  display: flex;
+  display: none;
 }
 .row label {
   width: 50px;

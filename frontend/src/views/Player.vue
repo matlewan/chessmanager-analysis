@@ -66,7 +66,7 @@ function result(t, player, attr) {
 function chartOnClick(_event, obj) {
   const t = tournaments[obj[0].index]
   const [a,b] = t.slice(1).split('.')
-  router.push(`/matches?edition=${a}&t=${b}&player=${name.value}`)
+  router.push(`/tournaments?edition=${a}&t=${b}&player=${name.value}`)
 }
 </script>
 
@@ -121,7 +121,7 @@ function chartOnClick(_event, obj) {
           <tr v-for="d in duels">
             <td @click="name=d.opponent" class="link">{{ d.opponent }}</td>
             <td class="center">{{ Math.round(d.rating) }}</td>
-            <td class="link center" @click="router.push(`/matches?player=${name}&opponent=${d.opponent}`)">{{ d.W }}-{{ d.D }}-{{ d.L }}</td>
+            <td class="link center" @click="router.push(`/tournaments?player=${name}&opponent=${d.opponent}`)">{{ d.W }}-{{ d.D }}-{{ d.L }}</td>
           </tr>
         </tbody>
       </table>
@@ -162,6 +162,7 @@ label {
 }
 @media (max-width: 600px) {
   .title {
+    font-size: 0.7rem;
     display: none;
   }
 }
