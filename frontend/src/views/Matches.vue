@@ -102,7 +102,7 @@ function setPlayer(p) {
           <tbody>
             <tr v-for="r in results">
              <td>{{ r.place }}.</td>
-             <td class="name">{{ r.p.name }}</td>
+             <td class="name" @click="setPlayer(r.p.name)">{{ r.p.name }}</td>
              <td>{{ r.points.toFixed(1) }}</td>
              <td>{{ r.bch1.toFixed(1) }}</td>
              <td>{{ r.bch.toFixed(1) }}</td> 
@@ -124,6 +124,7 @@ td {
   text-align: center;
 }
 td.name {
+  cursor: pointer;
   width: calc(10em + 4vw);
   text-align: left;
 }

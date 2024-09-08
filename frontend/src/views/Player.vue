@@ -14,7 +14,7 @@ const tournaments = Object.keys(store.state.data.tournaments).reverse()
 const names = Object.keys(players).sort()
 
 const name = ref(useRoute().query.name)
-const axisY = ref('points')
+const axisY = ref('score %')
 
 const allAxisY = computed(() => { return {
   points: tournaments.map(t => result(t, name.value, 'points')),
@@ -43,15 +43,17 @@ const chartData = computed(() => {
   }
 })
 const chartOptions = computed(() => { 
-  const data = results.value.filter(Number); 
+  const data = results.value.filter(Number);
+  const M = Math.round(Math.max(...data)*1.2)
   return { 
     scales: { 
-      y: { min: 0, max: Math.max(...data)+1 },
+      y: { min: 0, max: M },
       x: { ticks: { callback: i => tournaments[i] } }
     },
     responsive: true,
     maintainAspectRatio: true, 
-    onClick: chartOnClick
+    onClick: chartOnClick,
+
   }
 })
 function result(t, player, attr) {
@@ -66,20 +68,16 @@ function result(t, player, attr) {
 function chartOnClick(_event, obj) {
   const t = tournaments[obj[0].index]
   const [a,b] = t.slice(1).split('.')
-  router.push(`/tournaments?edition=${a}&t=${b}&player=${name.value}`)
+  const name = a + '.' + b;
+  router.push(`/tournament?name=${name}`)
 }
 </script>
 
 <template>
   <main>
-    <div>
-      <div class="row">
-        <label>Player:</label>
-        <select v-model="name">
-          <option v-for="n in names">{{ n }}</option>
-        </select>
-      </div>
-      <table class="info" v-if="name">
+    <div class="info">
+      <h3>{{ name }}</h3>
+      <table v-if="name">
         <tr>
           <th>BYear</th>
           <th>FIDE</th>
@@ -97,31 +95,30 @@ function chartOnClick(_event, obj) {
           <td>{{ W }}-{{ D }}-{{ L }}</td>
         </tr>
       </table>
+      <div class="chart">
+        <Scatter :width="100" :data="chartData" :options="chartOptions" />
+        <div class="chart-axis">
+          <label>Axis Y:</label>
+          <select v-model="axisY">
+            <option v-for="n in ['points','place','score %']">{{ n }}</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <Scatter :width="100" :data="chartData" :options="chartOptions" />
-    <div class="row">
-      <label>Axis Y:</label>
-      <select v-model="axisY">
-        <option v-for="n in ['points','place','score %']">{{ n }}</option>
-      </select>
-    </div>
-    <div class="table">
+    <div class="opponents">
       <table>
-        <col width="200px" />
-        <col width="70px" />
-        <col width="100px" />
         <thead>
           <tr>
-            <th>Opponent</th>
-            <th class="center">Rating</th>
-            <th class="center">W-D-L</th>
+            <th class="name">Opponent</th>
+            <th class="rating">Rating</th>
+            <th class="wdl-stats">W-D-L</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="d in duels">
-            <td @click="name=d.opponent" class="link">{{ d.opponent }}</td>
-            <td class="center">{{ Math.round(d.rating) }}</td>
-            <td class="link center" @click="router.push(`/tournaments?player=${name}&opponent=${d.opponent}`)">{{ d.W }}-{{ d.D }}-{{ d.L }}</td>
+            <td @click="name=d.opponent" class="name link">{{ d.opponent }}</td>
+            <td class="rating">{{ Math.round(d.rating) }}</td>
+            <td class="link wdl-stats" @click="router.push(`/tournaments?player=${name}&opponent=${d.opponent}`)">{{ d.W }}-{{ d.D }}-{{ d.L }}</td>
           </tr>
         </tbody>
       </table>
@@ -130,28 +127,40 @@ function chartOnClick(_event, obj) {
 </template>
 
 <style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1vw 2em;
+}
+@media (min-width: 700px) {
+  main {
+    flex-direction: row; 
+    align-items: start; 
+    gap: 1em;
+  }
+  .opponents {
+    margin-top: calc(1.83em);
+    min-width: 18em;
+  }
+  .info { flex-grow: 1; max-width: 60vw; }
+}
 th {
   text-align: left;
   font-weight: 550;
 }
 .info th, .info td {
-  padding-right: 20px !important;
+  padding-right: 0.5em;
+}
+@media (max-width: 700px) {
+  .info { width: 95% }
 }
 .num {
   text-align: right;
 }
-.center {
+.rating,.wdl-stats {
   text-align: center;
-}
-td.center {
   padding: 0 5px;
-}
-table {
-  margin-top: 10  px;
-}
-select {
-  height: 25px;
-  width: 200px;
 }
 label {
   margin-right: 10px;
@@ -165,10 +174,5 @@ label {
     font-size: 0.7rem;
     display: none;
   }
-}
-canvas {
-  width: 100%;
-  max-width: 800px;
-  max-height: 400px;
 }
 </style>
