@@ -118,7 +118,7 @@ function chartOnClick(_event, obj) {
           <tr v-for="d in duels">
             <td @click="name=d.opponent" class="name link">{{ d.opponent }}</td>
             <td class="rating">{{ Math.round(d.rating) }}</td>
-            <td class="link wdl-stats" @click="router.push(`/tournaments?player=${name}&opponent=${d.opponent}`)">{{ d.W }}-{{ d.D }}-{{ d.L }}</td>
+            <td class="wdl-stats">{{ d.W }}-{{ d.D }}-{{ d.L }}</td>
           </tr>
         </tbody>
       </table>
